@@ -79,6 +79,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  padding-top: 135px;
   font-size: 63px;
   font-family: "Asap", sans-serif;
 }
