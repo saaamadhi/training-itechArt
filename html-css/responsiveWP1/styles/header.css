@@ -1,0 +1,119 @@
+.wrap {
+  margin: 0 auto;
+  max-width: 1450px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 10%;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: center / cover no-repeat url(../images/banner/background.png);
+}
+
+.page-header__logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.page-header__text-container {
+  display: flex;
+  align-items: baseline;
+}
+
+.page-header__logo-icon {
+  width: 80px;
+  height: 80px;
+  background: url(../images/banner/logo.png);
+}
+
+.page-header__icon-container {
+  position: relative;
+}
+
+.page-header__icon--dark-yellow {
+  position: absolute;
+  top: 1.2px;
+  left: 2px;
+}
+/*
+.logo-name {
+  font-size: 2.5em;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-style: italic;
+}
+
+.logo-text {
+  height: fit-content;
+  font-size: 0.8em;
+  font-family: "Asap", sans-serif;
+}
+
+.header__nav {
+  padding: 0.5rem 0;
+  background: #f5c506;
+  height: fit-content;
+  font-family: "Asap", sans-serif;
+  font-size: 1em;
+  box-shadow: -4px -4px rgba(245, 197, 6, 0.4), -8px -8px rgba(245, 197, 6, 0.2);
+}
+
+.header__nav > a {
+  position: relative;
+  color: #b99403;
+  text-decoration: none;
+  margin: 0 1rem 0 3rem;
+}
+
+.header__nav > a:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: -0.4rem;
+  margin: 0 1.5rem;
+  width: 1px;
+  height: 2rem;
+  background: #b99403;
+}
+
+.header__nav > a:nth-child(1)::before,
+.header__nav > a:nth-child(2)::before,
+.header__nav > a:nth-child(3)::before {
+  content: "";
+  position: absolute;
+  left: -1.5rem;
+}
+
+.header__nav > a:nth-child(1)::before {
+  width: 15px;
+  height: 16px;
+  background: center / cover url(../images/banner/navigation/person-icon.png);
+}
+
+.header__nav > a:nth-child(2)::before {
+  width: 16px;
+  height: 16px;
+  background: center / cover url(../images/banner/navigation/services-icon.png);
+}
+
+.header__nav > a:nth-child(3)::before {
+  width: 21px;
+  height: 15px;
+  background: center / cover url(../images/banner/navigation/contact-icon.png);
+}
+
+.slogan {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 4em;
+  font-family: "Asap", sans-serif;
+  padding: 8rem 0;
+}
+
+.slogan--yellow {
+  color: #f5c506;
+}
+*/
