@@ -4,13 +4,19 @@
 }
 
 .page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  height: 566px;
   padding: 0 10%;
   text-transform: uppercase;
   color: #ffffff;
   background: center / cover no-repeat url(../images/banner/background.png);
+  overflow: hidden;
+}
+
+.page-header__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 0 0 0;
 }
 
 .page-header__logo-container {
@@ -23,10 +29,16 @@
   align-items: baseline;
 }
 
-.page-header__logo-icon {
-  width: 80px;
-  height: 80px;
-  background: url(../images/banner/logo.png);
+.page-header__logo-name {
+  font-size: 41px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-style: italic;
+}
+
+.page-header__logo-text {
+  font-size: 13px;
+  font-family: "Asap", sans-serif;
 }
 
 .page-header__icon-container {
@@ -38,82 +50,39 @@
   top: 1.2px;
   left: 2px;
 }
-/*
-.logo-name {
-  font-size: 2.5em;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  font-style: italic;
-}
 
-.logo-text {
-  height: fit-content;
-  font-size: 0.8em;
+.page-header__nav {
+  display: flex;
+  padding: 0 10px;
   font-family: "Asap", sans-serif;
-}
-
-.header__nav {
-  padding: 0.5rem 0;
   background: #f5c506;
-  height: fit-content;
-  font-family: "Asap", sans-serif;
-  font-size: 1em;
-  box-shadow: -4px -4px rgba(245, 197, 6, 0.4), -8px -8px rgba(245, 197, 6, 0.2);
+  box-shadow: -4px -4px #f5c50640, -8px -8px #f5c50620;
 }
 
-.header__nav > a {
-  position: relative;
-  color: #b99403;
+.page-header__nav-link {
+  display: flex;
+  padding: 10px 23px;
   text-decoration: none;
-  margin: 0 1rem 0 3rem;
+  color: #9b7d08;
 }
 
-.header__nav > a:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: -0.4rem;
-  margin: 0 1.5rem;
-  width: 1px;
-  height: 2rem;
-  background: #b99403;
+.page-header__nav-link-icon {
+  margin-right: 8px;
 }
 
-.header__nav > a:nth-child(1)::before,
-.header__nav > a:nth-child(2)::before,
-.header__nav > a:nth-child(3)::before {
-  content: "";
-  position: absolute;
-  left: -1.5rem;
+._marked {
+  border-right: 1px solid #9b7d08;
+  border-left: 1px solid #9b7d08;
 }
 
-.header__nav > a:nth-child(1)::before {
-  width: 15px;
-  height: 16px;
-  background: center / cover url(../images/banner/navigation/person-icon.png);
-}
-
-.header__nav > a:nth-child(2)::before {
-  width: 16px;
-  height: 16px;
-  background: center / cover url(../images/banner/navigation/services-icon.png);
-}
-
-.header__nav > a:nth-child(3)::before {
-  width: 21px;
-  height: 15px;
-  background: center / cover url(../images/banner/navigation/contact-icon.png);
-}
-
-.slogan {
+.page-header__slogan {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  font-size: 4em;
+  font-size: 63px;
   font-family: "Asap", sans-serif;
-  padding: 8rem 0;
 }
 
-.slogan--yellow {
+.page-header__slogan--yellow {
   color: #f5c506;
 }
-*/
