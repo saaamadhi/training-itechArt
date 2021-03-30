@@ -1,3 +1,10 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .wrap {
   display: flex;
   justify-content: center;
@@ -22,6 +29,7 @@
 .header {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .header__logo-container {
@@ -57,11 +65,13 @@
 }
 
 .header__nav {
-  padding: 0 10px 0 20px;
+  padding: 0 10px 0 15px;
 }
 
 .nav {
   display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: "Asap", sans-serif;
   background: #f5c506;
   box-shadow: -4px -4px #f5c50640, -8px -8px #f5c50620;
