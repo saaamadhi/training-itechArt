@@ -5,18 +5,17 @@
 
 .page-header {
   height: 566px;
-  padding: 0 10%;
+  padding: 28px 10% 0 10%;
   text-transform: uppercase;
   color: #ffffff;
   background: center / cover no-repeat url(../images/banner/background.png);
   overflow: hidden;
 }
 
-.page-header__header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 28px 0 0 0;
 }
 
 .page-header__logo-container {
