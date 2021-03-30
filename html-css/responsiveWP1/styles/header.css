@@ -91,6 +91,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 40px;
   font-family: "Asap", sans-serif;
   background: #f5c506;
   box-shadow: -4px -4px #f5c50640, -8px -8px #f5c50620;
@@ -101,10 +102,10 @@ body {
   justify-content: center;
   align-items: center;
   padding: 0 10px;
-  height: 40px;
   text-decoration: none;
   text-transform: uppercase;
   color: #9b7d08;
+  height: 100%;
 }
 
 .nav__link-icon {
