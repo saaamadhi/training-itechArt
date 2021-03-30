@@ -7,6 +7,7 @@ body {
 
 .wrap {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   max-width: 1450px;
@@ -19,10 +20,11 @@ body {
   justify-content: center;
   align-items: center;
   height: 566px;
+  width: 100%;
   padding: 28px 10% 0;
+  box-sizing: border-box;
   background: center / cover no-repeat url(../images/banner/background.png);
   overflow: hidden;
-  width: 100%;
 }
 
 .page-header__header {
