@@ -20,8 +20,6 @@ body {
   align-items: center;
   height: 566px;
   padding: 28px 10% 0 10%;
-  text-transform: uppercase;
-  color: #ffffff;
   background: center / cover no-repeat url(../images/banner/background.png);
   overflow: hidden;
 }
@@ -47,11 +45,15 @@ body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-style: italic;
+  text-transform: uppercase;
+  color: #ffffff;
 }
 
 .header__logo-text {
   font-size: 13px;
   font-family: "Asap", sans-serif;
+  text-transform: uppercase;
+  color: #ffffff;
 }
 
 .header__icon-container {
@@ -67,8 +69,8 @@ body {
 
 .header__icon--back-icon {
   position: absolute;
-  top: 1.2px;
-  left: 2px;
+  top: 1.6%;
+  left: 2.4%;
   width: 78px;
   height: 78px;
   fill: #f5c506;
@@ -96,6 +98,7 @@ body {
   padding: 0 10px;
   height: 40px;
   text-decoration: none;
+  text-transform: uppercase;
   color: #9b7d08;
 }
 
@@ -142,10 +145,18 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 63px;
-  font-family: "Asap", sans-serif;
 }
 
 .slogan-container__text--yellow {
+  font-size: 63px;
+  font-family: "Asap", sans-serif;
   color: #f5c506;
+  text-transform: uppercase;
+}
+
+.slogan-container__text--white {
+  font-size: 63px;
+  font-family: "Asap", sans-serif;
+  color: #ffffff;
+  text-transform: uppercase;
 }
