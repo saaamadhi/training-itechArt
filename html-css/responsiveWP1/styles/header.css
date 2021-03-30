@@ -18,71 +18,77 @@
   align-items: center;
 }
 
-.page-header__logo-container {
+.header__logo-container {
   display: flex;
   align-items: center;
 }
 
-.page-header__text-container {
+.header__text-container {
   display: flex;
   align-items: baseline;
 }
 
-.page-header__logo-name {
+.header__logo-name {
   font-size: 41px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-style: italic;
 }
 
-.page-header__logo-text {
+.header__logo-text {
   font-size: 13px;
   font-family: "Asap", sans-serif;
 }
 
-.page-header__icon-container {
+.header__icon-container {
   position: relative;
 }
 
-.page-header__icon--dark-yellow {
+.header__icon--back-icon {
   position: absolute;
   top: 1.2px;
   left: 2px;
 }
 
-.page-header__nav {
-  display: flex;
+.header__nav {
   padding: 0 10px;
+}
+
+.nav {
+  display: flex;
   font-family: "Asap", sans-serif;
   background: #f5c506;
   box-shadow: -4px -4px #f5c50640, -8px -8px #f5c50620;
 }
 
-.page-header__nav-link {
+.nav__link {
   display: flex;
   padding: 10px 23px;
   text-decoration: none;
   color: #9b7d08;
 }
 
-.page-header__nav-link-icon {
+.nav__link-icon {
   margin-right: 8px;
 }
 
-._marked {
+.nav__link--bordered {
   border-right: 1px solid #9b7d08;
   border-left: 1px solid #9b7d08;
 }
 
 .page-header__slogan {
+  padding-top: 135px;
+}
+
+.slogan-container {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  padding-top: 135px;
   font-size: 63px;
   font-family: "Asap", sans-serif;
 }
 
-.page-header__slogan--yellow {
+.slogan-container__text--yellow {
   color: #f5c506;
 }
