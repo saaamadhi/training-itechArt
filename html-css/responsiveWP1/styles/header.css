@@ -22,12 +22,17 @@ body {
   padding: 28px 10% 0 10%;
   background: center / cover no-repeat url(../images/banner/background.png);
   overflow: hidden;
+  width: 100%;
+}
+
+.page-header__header {
+  width: 100%;
 }
 
 .header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .header__logo-container {
