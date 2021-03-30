@@ -1,9 +1,16 @@
 .wrap {
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   max-width: 1450px;
+  width: 100%;
 }
 
 .page-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 566px;
   padding: 28px 10% 0 10%;
   text-transform: uppercase;
@@ -14,7 +21,6 @@
 
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -51,7 +57,7 @@
 }
 
 .header__nav {
-  padding: 0 10px;
+  padding: 0 10px 0 20px;
 }
 
 .nav {
@@ -63,13 +69,16 @@
 
 .nav__link {
   display: flex;
-  padding: 10px 23px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  height: 40px;
   text-decoration: none;
   color: #9b7d08;
 }
 
 .nav__link-icon {
-  margin-right: 8px;
+  padding: 0 5px;
 }
 
 .nav__link--bordered {
@@ -77,18 +86,19 @@
   border-left: 1px solid #9b7d08;
 }
 
-.page-header__slogan {
-  padding-top: 135px;
-}
-
 .slogan-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  height: 100%;
+  width: 100%;
 }
 
 .slogan-container__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 63px;
   font-family: "Asap", sans-serif;
 }
