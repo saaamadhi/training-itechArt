@@ -58,10 +58,22 @@ body {
   position: relative;
 }
 
+.header__icon--front-icon {
+  width: 83px;
+  height: 83px;
+  fill: #f5c506;
+  fill-rule: evenodd;
+}
+
 .header__icon--back-icon {
   position: absolute;
   top: 1.2px;
   left: 2px;
+  width: 78px;
+  height: 78px;
+  fill: #f5c506;
+  opacity: 0.502;
+  fill-rule: evenodd;
 }
 
 .header__nav {
@@ -94,6 +106,27 @@ body {
 .nav__link--bordered {
   border-right: 1px solid #9b7d08;
   border-left: 1px solid #9b7d08;
+}
+
+.nav__link--person-icon {
+  width: 21px;
+  height: 19px;
+  fill: #b99403;
+  fill-rule: evenodd;
+}
+
+.nav__link--services-icon {
+  width: 19px;
+  height: 19px;
+  fill: #b99403;
+  fill-rule: evenodd;
+}
+
+.nav__link--contact-icon {
+  width: 24px;
+  height: 18px;
+  fill: #b99403;
+  fill-rule: evenodd;
 }
 
 .slogan-container {
