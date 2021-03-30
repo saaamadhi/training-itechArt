@@ -84,7 +84,11 @@
 .slogan-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: flex-end;
+}
+
+.slogan-container__inner {
   font-size: 63px;
   font-family: "Asap", sans-serif;
 }
