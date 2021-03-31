@@ -26,6 +26,7 @@
   height: 74px;
   fill-rule: evenodd;
   fill: #f5c506;
+  padding-bottom: 17px;
 }
 
 .item__icon--leaf-icon {
@@ -33,6 +34,7 @@
   height: 95px;
   fill-rule: evenodd;
   fill: #f5c506;
+  padding-bottom: 20px;
 }
 
 .item__icon--paper-airplane-icon {
@@ -40,6 +42,7 @@
   height: 83px;
   fill-rule: evenodd;
   fill: #f5c506;
+  padding-bottom: 17px;
 }
 
 .item__title {
