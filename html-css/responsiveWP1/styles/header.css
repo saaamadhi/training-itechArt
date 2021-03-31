@@ -12,6 +12,7 @@ body {
   align-items: center;
   max-width: 1450px;
   width: 100%;
+  overflow: hidden;
 }
 
 .page-header {
