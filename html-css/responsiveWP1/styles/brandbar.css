@@ -1,34 +1,33 @@
 .brandbar {
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100%;
   height: 212px;
   background: center / cover no-repeat url(../images/brandbar/back-brandbar.png);
   box-shadow: 0 0 5px #000000;
 }
-
-.item-imgs {
+.container {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 100%;
+  justify-content: space-evenly;
+  align-items: baseline;
+  width: 100%;
 }
 
-.item-sentences {
+.item {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
 }
 
-.item-imgs__icon--cloud-icon {
+.item__icon--cloud-icon {
   width: 109px;
   height: 74px;
   fill-rule: evenodd;
   fill: #f5c506;
 }
 
-.item-imgs__icon--leaf-icon {
+.item__icon--leaf-icon {
   width: 92px;
   height: 95px;
   fill-rule: evenodd;
@@ -36,14 +35,14 @@
   padding: 0 0 0 7n0px;
 }
 
-.item-imgs__icon--paper-airplane-icon {
+.item__icon--paper-airplane-icon {
   width: 81px;
   height: 83px;
   fill-rule: evenodd;
   fill: #f5c506;
 }
 
-.item-sentences__title {
+.item__title {
   font-size: 27px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: lighter;
