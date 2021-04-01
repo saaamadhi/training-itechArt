@@ -6,6 +6,7 @@
   height: 212px;
   background: center / cover no-repeat url(../images/brandbar/back-brandbar.png);
   box-shadow: 0 0 9px 0 #000000;
+  z-index: 1;
 }
 
 .container {
