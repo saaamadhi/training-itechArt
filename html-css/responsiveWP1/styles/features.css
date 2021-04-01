@@ -83,7 +83,7 @@
 .item-twitter {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   padding: 12px 9px;
   background: #ec9e03;
   width: 330px;
@@ -93,7 +93,6 @@
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  height: 100%;
 }
 
 .twits-amount-container__twits-amount {
@@ -107,7 +106,6 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 100%;
 }
 
 .twitter-icon-container__twitter-icon {
@@ -122,7 +120,6 @@
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  height: 100%;
 }
 
 .add-twit-btn {
