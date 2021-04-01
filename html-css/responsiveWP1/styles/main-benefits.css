@@ -1,0 +1,94 @@
+.main-benefits {
+  padding: 48px 10% 0;
+  width: 100%;
+  height: 498px;
+  box-sizing: border-box;
+  background: center / cover no-repeat
+    url(../images/main-benefits/background.png);
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.title-container__title {
+  font-family: "Asap", sans-serif;
+  font-size: 43px;
+  text-transform: uppercase;
+  color: #f5c506;
+}
+
+.content-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.benefits-imgs-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /*width: 559px;*/
+}
+
+.desktop-icon-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sticker-container {
+  position: absolute;
+  top: -42px;
+  left: -21px;
+}
+
+.inner-sticker-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner-sticker-container__circle {
+  width: 116px;
+  height: 116px;
+  fill-rule: evenodd;
+  fill: #f5c506;
+}
+
+.inner-sticker-container__caption {
+  position: absolute;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.benefits-imgs-wrap__tablet-n-phone-icons-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.benefits-list-container {
+  width: 385px;
+}
+
+.benefits-list {
+  font-size: 40px;
+  list-style-type: disc;
+}
+
+.benefit-text-item {
+  color: #f5c506;
+}
+
+.benefit-text-item__desc {
+  font-family: "Open Sans", sans-serif;
+  font-size: 22px;
+  color: #a9a9a7;
+}
