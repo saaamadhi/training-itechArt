@@ -23,9 +23,11 @@
 .content-wrap {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
 .benefits-imgs-wrap {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,24 +38,19 @@
   margin-left: 24px;
 }
 
-.sticker-container {
-  position: relative;
-  top: -110px;
-  left: 120px;
+.sticker {
+  position: absolute;
+  top: -43px;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 120px;
+  width: 120px;
+  background: #f5c506;
+  border-radius: 50%;
 }
 
-.sticker-container__circle {
-  width: 116px;
-  height: 116px;
-  fill-rule: evenodd;
-  fill: #f5c506;
-}
-
-.sticker-container__caption {
-  position: absolute;
+.sticker__caption {
   font-family: "PT Sans Narrow", sans-serif;
   font-size: 18px;
   font-weight: bold;
@@ -76,20 +73,29 @@
 }
 
 .benefits-list-container {
+  padding-top: 40px;
   width: 385px;
 }
 
-.benefits-list {
-  font-size: 40px;
-  list-style-type: disc;
+.benefit-item {
+  position: relative;
+  margin-bottom: 15px;
 }
 
-.benefit-text-item {
-  color: #f5c506;
+.benefit-item__marker {
+  position: absolute;
+  top: 9px;
+  left: -30px;
+  margin: 0;
+  height: 13px;
+  width: 13px;
+  background: #f5c506;
+  border-radius: 50%;
 }
 
-.benefit-text-item__desc {
+.benefit-item__desc {
   font-family: "Open Sans", sans-serif;
   font-size: 22px;
+  line-height: 1.3;
   color: #a9a9a7;
 }
