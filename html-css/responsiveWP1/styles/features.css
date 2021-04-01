@@ -93,6 +93,7 @@
   display: flex;
   justify-content: flex-end;
   width: 100%;
+  height: 100%;
 }
 
 .twits-amount-container__twits-amount {
@@ -105,8 +106,8 @@
 .twitter-icon-container {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
   width: 100%;
+  height: 100%;
 }
 
 .twitter-icon-container__twitter-icon {
@@ -117,11 +118,15 @@
   opacity: 0.902;
 }
 
-.add-twit-btn {
+.add-twit-btn-container {
   display: flex;
   justify-content: flex-end;
-  padding: 0;
   width: 100%;
+  height: 100%;
+}
+
+.add-twit-btn {
+  padding: 0;
   border: none;
   outline: none;
   background: transparent;
