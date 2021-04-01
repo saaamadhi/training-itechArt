@@ -23,6 +23,7 @@
 .content-wrap {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   width: 100%;
 }
 
@@ -72,25 +73,25 @@
   margin-left: 24px;
 }
 
-.benefits-list-container {
-  padding-top: 40px;
-  width: 385px;
+.benefits-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 385px;
+  height: 213px;
 }
 
 .benefit-item {
-  position: relative;
-  margin-bottom: 15px;
+  display: flex;
 }
 
 .benefit-item__marker {
-  position: absolute;
-  top: 9px;
-  left: -30px;
-  margin: 0;
   height: 13px;
-  width: 13px;
+  min-width: 13px;
   background: #f5c506;
   border-radius: 50%;
+  margin-top: 9px;
+  margin-right: 30px;
 }
 
 .benefit-item__desc {
