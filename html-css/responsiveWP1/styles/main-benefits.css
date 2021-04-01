@@ -10,7 +10,7 @@
 .title-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 14px;
+  margin-bottom: 59px;
 }
 
 .title-container__title {
@@ -29,7 +29,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box;
   /*width: 559px;*/
+  /*height: 300px;*/
 }
 
 .desktop-icon-container {
