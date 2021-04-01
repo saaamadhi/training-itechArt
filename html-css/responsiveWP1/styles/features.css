@@ -63,20 +63,33 @@
 .item-twitter {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 20px 9px;
+  padding: 12px 9px;
   background: #ec9e03;
   width: 330px;
 }
 
-.item-twitter__twits-amount {
+.twits-amount-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.twits-amount-container__twits-amount {
+  padding-right: 12px;
   font-size: 25px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #ffffff;
 }
 
-.item-twitter__twitter-icon {
+.twitter-icon-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.twitter-icon-container__twitter-icon {
   width: 163px;
   height: 133px;
   fill-rule: evenodd;
@@ -85,10 +98,14 @@
 }
 
 .add-twit-btn {
+  display: flex;
+  justify-content: flex-end;
   padding: 0;
+  width: 100%;
   border: none;
   outline: none;
   background: transparent;
+  cursor: pointer;
 }
 
 .add-twit-btn__icon {
