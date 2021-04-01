@@ -129,10 +129,30 @@
                             </button>
                         </div>
                     </div>
-                    <video class="video-block__video" controls poster="./images/section-features/monkey-n-human.png">
-                        <source src="#" type="video/mp4">
-                            Your browser does not support the video tag.
-                    </video>
+                    <div class="video-block__video-container video-container">
+                        <video class="video-block__video" poster="./images/section-features/monkey-n-human.png">
+                            <source src="#" type="video/mp4">
+                                Your browser does not support the video tag.
+                        </video>
+                        <button class="video-container__pause-btn pause-btn">
+                            <div class="pause-btn__pause-icon-container">
+                                <svg class="pause-icon-container__icon-circle"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                >
+                                    <path
+                                        d="M30.500,-0.000 C47.345,-0.000 61.000,13.655 61.000,30.500 C61.000,47.345 47.345,61.000 30.500,61.000 C13.655,61.000 -0.000,47.345 -0.000,30.500 C-0.000,13.655 13.655,-0.000 30.500,-0.000 Z"/>
+                                </svg>
+                                <svg class="pause-icon-container__icon-play"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                >
+                                    <path
+                                        d="M0.592,2.405 C0.592,1.584 0.985,1.005 1.764,0.666 C2.549,0.333 3.248,0.467 3.864,1.072 L17.330,14.566 C17.717,14.951 17.901,15.412 17.880,15.950 C17.880,16.468 17.697,16.914 17.330,17.283 L3.864,30.829 C3.248,31.449 2.549,31.583 1.764,31.234 C0.985,30.896 0.592,30.301 0.592,29.450 L0.592,2.405 L0.592,2.405 Z"/>
+                                </svg>
+                            </div>
+                        </button>
+                    </div>
                 </div>
                 <div class="content-container__item-twitter item-twitter">
                     <div class="item-twitter__twits-amount-container twits-amount-container">
