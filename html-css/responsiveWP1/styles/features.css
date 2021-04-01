@@ -21,25 +21,30 @@
   height: 233px;
 }
 
-.caption-container__caption {
+.caption-container {
+  padding: 12px 14px;
+}
+
+.desc-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.desc-container__caption {
+  padding: 13px 16px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 29px;
   color: #ffffff;
   font-weight: lighter;
-  line-height: 1.5;
-}
-
-.caption-container {
-  padding: 26px;
-  width: 300px;
-}
-
-.btn-container {
-  display: flex;
-  justify-content: flex-end;
+  line-height: 1.2;
 }
 
 .add-btn {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
   padding: 0;
   border: none;
   outline: none;
