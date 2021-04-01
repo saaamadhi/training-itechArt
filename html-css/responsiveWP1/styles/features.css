@@ -32,7 +32,7 @@
   flex-direction: column;
   align-items: flex-end;
   justify-content: space-between;
-  padding: 12px 14px;
+  padding: 11px 14px;
   width: 100%;
 }
 
@@ -116,22 +116,12 @@
   fill-rule: evenodd;
   fill: #f5f4f2;
 }
-/*.pause-btn {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 0;
-  border: none;
-  outline: none;
-  background: transparent;
-  cursor: pointer;
-}*/
 
 .item-twitter {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 12px 9px;
+  padding: 12px 8px;
   background: #ec9e03;
   width: 330px;
 }
