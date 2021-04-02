@@ -22,20 +22,18 @@ body {
   align-items: center;
   height: 566px;
   width: 100%;
-  padding: 28px 10% 0;
+  padding: 28px 0 0;
   box-sizing: border-box;
   background: center / cover no-repeat url(../images/banner/background.png);
   overflow: hidden;
-}
-
-.page-header__header {
-  width: 100%;
 }
 
 .header {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  flex-wrap: wrap;
+  width: 80%;
 }
 
 .header__logo-container {
