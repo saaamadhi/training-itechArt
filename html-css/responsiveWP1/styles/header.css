@@ -169,3 +169,7 @@ body {
   color: #ffffff;
   text-transform: uppercase;
 }
+
+.slogan-container__video {
+  display: none;
+}
