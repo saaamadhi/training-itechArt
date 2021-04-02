@@ -103,6 +103,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 0 10px;
+  font-size: 17px;
   text-decoration: none;
   text-transform: uppercase;
   color: #9b7d08;
@@ -145,7 +146,7 @@ body {
   justify-content: center;
   align-items: flex-end;
   height: 100%;
-  width: 100%;
+  width: 80%;
 }
 
 .slogan-container__inner {
@@ -168,6 +169,45 @@ body {
   text-transform: uppercase;
 }
 
-.slogan-container__video {
+.header-video-container__video {
   display: none;
+}
+
+.header-video-container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-stop-btn {
+  position: absolute;
+  display: none;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.header-stop-btn__circle {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 67px;
+  height: 67px;
+  background: #f5c506;
+  opacity: 0.722;
+  border-radius: 50%;
+}
+
+.header-stop-btn__play-btn {
+  position: absolute;
+  left: 38%;
+  width: 19px;
+  height: 34px;
+  fill-rule: evenodd;
+  fill: #f5f4f2;
 }
