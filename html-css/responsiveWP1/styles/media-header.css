@@ -1,0 +1,52 @@
+@media (max-width: 768px) {
+  .header__logo-text {
+    display: none;
+  }
+
+  .slogan-container {
+    height: initial;
+  }
+
+  .slogan-container__inner {
+    display: none;
+  }
+
+  .slogan-container__video {
+    display: block;
+    margin: 0;
+    width: 100%;
+  }
+
+  .page-header {
+    justify-content: flex-start;
+    padding: 0;
+    background: transparent;
+    height: fit-content;
+  }
+
+  .header {
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .header__logo-container {
+    padding: 12px;
+    background: linear-gradient(#5d5d5d, #454545);
+  }
+
+  .header__logo-name {
+    padding-right: 18px;
+    text-shadow: 0 2px 0 #2c2c2c;
+  }
+
+  .nav {
+    padding: 0;
+    width: 100%;
+    box-shadow: none;
+    background: url(../images/header/nav-back.png);
+  }
+
+  .nav__link {
+    width: 100%;
+  }
+}
