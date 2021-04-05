@@ -62,13 +62,27 @@ body {
   color: #ffffff;
 }
 
-.header__icon-container {
+.header__icon-container--desktop {
   position: relative;
+  margin-right: 5px;
+}
+
+.header__icon-container--mobile {
+  display: none;
+  position: relative;
+  margin-right: 5px;
 }
 
 .header__icon--front-icon {
   width: 83px;
   height: 83px;
+  fill: #f5c506;
+  fill-rule: evenodd;
+}
+
+.header__icon--front-icon-mobile {
+  width: 40px;
+  height: 39px;
   fill: #f5c506;
   fill-rule: evenodd;
 }
@@ -79,6 +93,17 @@ body {
   left: 2.4%;
   width: 78px;
   height: 78px;
+  fill: #f5c506;
+  opacity: 0.502;
+  fill-rule: evenodd;
+}
+
+.header__icon--back-icon-mobile {
+  position: absolute;
+  top: 1.6%;
+  left: 2.4%;
+  width: 38px;
+  height: 38px;
   fill: #f5c506;
   opacity: 0.502;
   fill-rule: evenodd;

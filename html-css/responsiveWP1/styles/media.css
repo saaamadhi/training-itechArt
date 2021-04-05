@@ -11,7 +11,15 @@
     align-items: flex-start;
     justify-content: center;
     width: 100%;
-    height: 109px;
+    height: 60px;
+  }
+
+  .header__icon-container--desktop {
+    display: none;
+  }
+
+  .header__icon-container--mobile {
+    display: block;
   }
 
   .header__logo-container {
@@ -75,6 +83,7 @@
   .video-block {
     padding: 10px;
     max-width: 100%;
+    margin: 0;
   }
 
   .video-block__video {
@@ -118,6 +127,10 @@
 
   .benefits-list {
     display: none;
+  }
+
+  .benefits-imgs-wrap {
+    margin: 0;
   }
 
   .title-container {
