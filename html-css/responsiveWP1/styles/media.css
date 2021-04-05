@@ -69,7 +69,7 @@
   .features {
     padding: 0;
     background: #ffffff;
-    height: fit-content;
+    min-height: fit-content;
   }
 
   .video-block {
