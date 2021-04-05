@@ -120,7 +120,8 @@ body {
   height: 40px;
   font-family: "Asap", sans-serif;
   background: #f5c506;
-  box-shadow: -4px -4px #f5c50640, -8px -8px #f5c50620;
+  box-shadow: -4px -4px rgba(245, 197, 6, 0.251),
+    -8px -8px rgba(245, 197, 6, 0.125);
 }
 
 .nav__link {
@@ -208,6 +209,8 @@ body {
 
 .header-stop-btn {
   position: absolute;
+  top: 40%;
+  left: 46%;
   display: none;
   padding: 0;
   border: none;
@@ -230,7 +233,8 @@ body {
 
 .header-stop-btn__play-btn {
   position: absolute;
-  left: 38%;
+  top: 25%;
+  left: 39%;
   width: 19px;
   height: 34px;
   fill-rule: evenodd;
@@ -240,6 +244,7 @@ body {
 .player {
   position: absolute;
   bottom: 5%;
+  left: 15%;
   display: none;
   justify-content: space-between;
   align-items: center;

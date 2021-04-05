@@ -23,7 +23,9 @@
   }
 
   .header__logo-container {
-    padding: 12px;
+    height: 60px;
+    width: 225px;
+    padding-left: 12px;
     background: linear-gradient(#5d5d5d, #454545);
   }
 
@@ -71,7 +73,9 @@
   }
 
   .brandbar {
-    box-shadow: 0 -5px #ffffff80, 0 -10px #ffffff60, inset 0 -5px #ffffff80;
+    box-shadow: 0 -5px rgba(255, 255, 255, 0.502),
+      0 -10px rgba(255, 255, 255, 0.376),
+      0 -5px rgba(255, 255, 255, 0.502) inset;
   }
 
   .features {
@@ -84,6 +88,7 @@
     padding: 10px;
     max-width: 100%;
     margin: 0;
+    width: 100%;
   }
 
   .video-block__video {
@@ -96,10 +101,13 @@
 
   .caption-container {
     margin-right: 5px;
+    width: 100%;
   }
 
   .video-container {
     margin-left: 5px;
+    width: 100%;
+    overflow: hidden;
   }
 
   .item-twitter {
