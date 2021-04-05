@@ -215,7 +215,7 @@ body {
 .player {
   position: absolute;
   bottom: 5%;
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   width: 500px;
