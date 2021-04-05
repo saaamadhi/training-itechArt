@@ -1,0 +1,144 @@
+@media (max-width: 768px) {
+  .page-header {
+    justify-content: flex-start;
+    padding: 0;
+    background: transparent;
+    height: 100%;
+  }
+
+  .header {
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+  }
+
+  .header__icon-container--desktop {
+    display: none;
+  }
+
+  .header__icon-container--mobile {
+    display: block;
+  }
+
+  .header__logo-container {
+    padding: 12px;
+    background: linear-gradient(#5d5d5d, #454545);
+  }
+
+  .header__logo-name {
+    font-size: 19px;
+    padding-right: 18px;
+    text-shadow: 0 2px 0 #2c2c2c;
+  }
+
+  .header__logo-text {
+    display: none;
+  }
+
+  .nav {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: none;
+    background: url(../images/header/nav-back.png);
+  }
+
+  .nav__link {
+    font-size: 19px;
+    width: 100%;
+  }
+
+  .slogan-container {
+    display: none;
+  }
+
+  .header-video-container__video {
+    display: block;
+    margin: 0;
+    width: 100%;
+  }
+
+  .header-stop-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .player {
+    display: flex;
+  }
+
+  .brandbar {
+    box-shadow: 0 -5px #ffffff80, 0 -10px #ffffff60, inset 0 -5px #ffffff80;
+  }
+
+  .features {
+    padding: 0;
+    background: #ffffff;
+    min-height: fit-content;
+  }
+
+  .video-block {
+    padding: 10px;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .video-block__video {
+    width: 100%;
+  }
+
+  .content-container {
+    width: 100%;
+  }
+
+  .caption-container {
+    margin-right: 5px;
+  }
+
+  .video-container {
+    margin-left: 5px;
+  }
+
+  .item-twitter {
+    width: 100%;
+    height: fit-content;
+    padding: 51px 0;
+    background: #f5c507;
+  }
+
+  .features__title {
+    display: none;
+  }
+
+  .twits-amount-container {
+    display: none;
+  }
+
+  .add-twit-btn-container {
+    display: none;
+  }
+
+  .main-benefits {
+    min-height: fit-content;
+  }
+
+  .benefits-list {
+    display: none;
+  }
+
+  .benefits-imgs-wrap {
+    margin: 0;
+  }
+
+  .title-container {
+    width: 100%;
+  }
+
+  .content-wrap {
+    width: 100%;
+    justify-content: center;
+  }
+}
