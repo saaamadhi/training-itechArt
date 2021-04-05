@@ -71,7 +71,9 @@
   }
 
   .brandbar {
-    box-shadow: 0 -5px #ffffff80, 0 -10px #ffffff60, inset 0 -5px #ffffff80;
+    box-shadow: 0 -5px rgba(255, 255, 255, 0.502),
+      0 -10px rgba(255, 255, 255, 0.376),
+      0 -5px rgba(255, 255, 255, 0.502) inset;
   }
 
   .features {
