@@ -66,6 +66,38 @@
     box-shadow: 0 -5px #ffffff80, 0 -10px #ffffff60, inset 0 -5px #ffffff80;
   }
 
+  .features {
+    padding: 0;
+    background: #ffffff;
+  }
+
+  .video-block {
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  .video-block__video {
+    width: 100%;
+  }
+
+  .content-container {
+    width: 100%;
+  }
+
+  .caption-container {
+    margin-right: 5px;
+  }
+
+  .video-container {
+    margin-left: 5px;
+  }
+
+  .item-twitter {
+    width: 100%;
+    padding: 51px 0;
+    background: #f5c507;
+  }
+
   .features__title {
     display: none;
   }
@@ -80,5 +112,9 @@
 
   .benefits-list {
     display: none;
+  }
+
+  .content-wrap {
+    justify-content: center;
   }
 }
