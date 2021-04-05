@@ -23,7 +23,9 @@
   }
 
   .header__logo-container {
-    padding: 12px;
+    height: 60px;
+    width: 225px;
+    padding-left: 12px;
     background: linear-gradient(#5d5d5d, #454545);
   }
 
