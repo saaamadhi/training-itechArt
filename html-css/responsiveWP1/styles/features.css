@@ -102,6 +102,8 @@
 
 .pause-btn {
   position: absolute;
+  top: 40%;
+  left: 40%;
   padding: 0;
   border: none;
   outline: none;
@@ -126,6 +128,7 @@
 
 .pause-icon-container__icon-play {
   position: absolute;
+  top: 15px;
   left: 24px;
   width: 18px;
   height: 32px;
