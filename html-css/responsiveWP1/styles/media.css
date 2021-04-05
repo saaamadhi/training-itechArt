@@ -111,11 +111,20 @@
     display: none;
   }
 
+  .main-benefits {
+    min-height: fit-content;
+  }
+
   .benefits-list {
     display: none;
   }
 
+  .title-container {
+    width: 100%;
+  }
+
   .content-wrap {
+    width: 100%;
     justify-content: center;
   }
 }
