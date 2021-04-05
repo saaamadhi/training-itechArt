@@ -28,7 +28,7 @@
 .content-wrap {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   flex-wrap: wrap;
   width: 80%;
 }
@@ -39,6 +39,7 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
+  margin-bottom: 40px;
 }
 
 .desktop-icon-container {
