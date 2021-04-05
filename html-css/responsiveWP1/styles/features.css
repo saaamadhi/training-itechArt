@@ -1,6 +1,9 @@
 .features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   box-sizing: border-box;
-  padding: 43px 10% 0;
+  padding-top: 43px;
   width: 100%;
   height: 506px;
   background: center / cover no-repeat
@@ -9,6 +12,7 @@
 
 .features__title {
   font-size: 37px;
+  width: 80%;
   font-family: "Asap", sans-serif;
   text-transform: uppercase;
   color: #ffffff;
@@ -18,6 +22,8 @@
 .content-container {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  width: 80%;
   height: 233px;
 }
 
