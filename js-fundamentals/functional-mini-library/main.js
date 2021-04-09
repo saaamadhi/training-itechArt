@@ -3,62 +3,38 @@ class FuncLib {
         this.arr = arr;
         this.perem = 0;
     }
-    firstObj(){
+    first(){
         this.perem = this.arr[0];
         return this;
     }
-    lastObj(){
+    last(){
         this.perem = this.arr[this.arr.length - 1];
         return this;
     }
-    skipObj(number){
+    skip(number){
         this.arr = Array.from(this.arr).slice(number);
         return this;
     }
-    takeObj(number){
+    take(number){
         this.arr = Array.from(this.arr).slice(0, number);
         return this;
     }
 
-    isObjArray(obj) {
-        if(Object.prototype.toString.call(obj) === '[object Array]') return true;
-        else return false;
-    }
+    isArray = (obj) => {return Array.isArray(obj)}
 
-    isObjBoolean(obj){
-        if(Object.prototype.toString.call(obj) === '[object Boolean]') return true;
-        else return false;
-    }
+    isBoolean = (obj) => { return typeof(obj) === 'boolean'}
 
-    isObjDate(obj){
-        if(Object.prototype.toString.call(obj) === '[object Date]') return true;
-        else return false;
-    }
+    isDate = (obj) => {return obj instanceof Date}
 
-    isObjNumber(obj){
-        if(Object.prototype.toString.call(obj) === '[object Number]') return true;
-        else return false;
-    }
+    isNumber = (obj) =>{return typeof(obj) === 'number'}
 
-    isObjString(obj){
-        if(Object.prototype.toString.call(obj) === '[object String]') return true;
-        else return false;
-    }
+    isString = (obj) => {return typeof(obj) === 'string'}
 
-    isObjFunction(obj){
-        if(Object.prototype.toString.call(obj) === '[object Function]') return true;
-        else return false;
-    }
+    isFunction = (obj) => {return typeof(obj) === 'function'}
 
-    isObjUndefined(obj){
-        if(Object.prototype.toString.call(obj) === '[object Undefined]') return true;
-        else return false;
-    }
+    isUndefined = (obj) => { return obj === undefined}
 
-    isObjNull(obj){
-        if(Object.prototype.toString.call(obj) === '[object Null]') return true;
-        else return false;
-    }
+    isNull = (obj) => {return obj === null}
 }
 
 const instance1 = new FuncLib([2, 32, 56, 1, 4, 5, 8, 45, 38]);
