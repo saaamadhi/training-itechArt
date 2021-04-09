@@ -3,41 +3,57 @@ class FuncLib {
         this.arr = arr;
         this.perem = 0;
     }
-    first(){
+    first() {
         this.perem = this.arr[0];
         return this;
     }
-    last(){
+    last() {
         this.perem = this.arr[this.arr.length - 1];
         return this;
     }
-    skip(number){
+    skip(number) {
         this.arr = Array.from(this.arr).slice(number);
         return this;
     }
-    take(number){
+     take(number) {
         this.arr = Array.from(this.arr).slice(0, number);
         return this;
     }
 
-    isArray = (obj) => {return Array.isArray(obj)}
+    isArray(obj) {
+        return obj instanceof Array;
+    }
 
-    isBoolean = (obj) => { return typeof(obj) === 'boolean'}
+    isBoolean(obj){
+        return !!obj === obj
+    }
 
-    isDate = (obj) => {return obj instanceof Date}
+    isDate(obj){ 
+        return obj instanceof Date
+    }
 
-    isNumber = (obj) =>{return typeof(obj) === 'number'}
+    isNumber(obj){ 
+        return isNaN(obj) ? false: true
+    }
 
-    isString = (obj) => {return typeof(obj) === 'string'}
+    isString(obj){
+        return typeof(obj) === 'string'
+    } 
 
-    isFunction = (obj) => {return typeof(obj) === 'function'}
+    isFunction(obj){
+        return typeof(obj) === 'function'
+    }
 
-    isUndefined = (obj) => { return obj === undefined}
+    isUndefined(obj){
+        return obj === undefined
+    } 
 
-    isNull = (obj) => {return obj === null}
+    isNull(obj) {
+        return obj === null
+    }
 }
 
 const instance1 = new FuncLib([2, 32, 56, 1, 4, 5, 8, 45, 38]);
 const instance2 = new FuncLib();
-instance1.takeObj(5).lastObj();
-instance2.isObjArray([1, 2, 3]);
+instance1.take(5).last();
+instance2.isArray([1, 2, 3]);
