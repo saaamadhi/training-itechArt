@@ -3,20 +3,28 @@ class FuncLib {
         this.arr = arr;
         this.perem = 0;
     }
+
     first() {
         this.perem = this.arr[0];
+    
         return this;
     }
+
     last() {
         this.perem = this.arr[this.arr.length - 1];
+
         return this;
     }
+
     skip(number) {
         this.arr = Array.from(this.arr).slice(number);
+
         return this;
     }
-     take(number) {
+
+    take(number) {
         this.arr = Array.from(this.arr).slice(0, number);
+
         return this;
     }
 
@@ -25,31 +33,31 @@ class FuncLib {
     }
 
     isBoolean(obj){
-        return !!obj === obj
+        return !!obj === obj;
     }
 
     isDate(obj){ 
-        return obj instanceof Date
+        return obj instanceof Date;
     }
 
     isNumber(obj){ 
-        return isNaN(obj) ? false: true
+        return Object.prototype.toString.call(obj) === "[object Number]";
     }
 
     isString(obj){
-        return typeof(obj) === 'string'
+        return typeof(obj) === 'string';
     } 
 
     isFunction(obj){
-        return typeof(obj) === 'function'
+        return typeof(obj) === 'function';
     }
 
     isUndefined(obj){
-        return obj === undefined
+        return obj === undefined;
     } 
 
     isNull(obj) {
-        return obj === null
+        return obj === null;
     }
 }
 
