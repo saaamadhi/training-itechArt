@@ -1,21 +1,39 @@
 class FuncLib {
-    static first(arr) {
+    constructor(array){
+        this.array = array;
+    }
+
+    static asChain(arr){
+        return new FuncLib(arr);
+    }
+
+    skip(number){
+        this.array = FuncLib.skip(this.array, number);
+        return this;
+    }
+
+    take(number){
+        this.array = FuncLib.take(this.array, number); 
+        return this;
+    }
+
+    static first(arr = this.array){
         return arr[0];
     }
 
-    static last(arr) {
+    static last(arr = this.array){
         return arr[arr.length - 1];
     }
 
-    static skip(arr, number) {
+    static skip(arr, number){
         return Array.from(arr).slice(number);
     }
 
-    static take(arr, number) {
+    static take(arr, number){
         return Array.from(arr).slice(0, number); 
     }
 
-    static isArray(obj) {
+    static isArray(obj){
         return obj instanceof Array;
     }
 
@@ -43,7 +61,7 @@ class FuncLib {
         return obj === undefined;
     } 
 
-    static isNull(obj) {
+    static isNull(obj){
         return obj === null;
     }
 }
