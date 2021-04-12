@@ -4,7 +4,7 @@ class ArrLib {
     }
 
     static chain(arr){
-        return (Array.isArray(arr) && arr.length > 0) ? new ArrLib(arr) : [];
+        return (Array.isArray(arr) && arr.length > 0) ? new ArrLib(arr) : arr;
     }
 
     value(){
@@ -63,7 +63,7 @@ class ArrLib {
             }
 
             return result;
-        } else return [];
+        } else return arr;
     }
 
     static reduce(arr, callback, initialValue){
@@ -74,7 +74,7 @@ class ArrLib {
             }
 
             return res;
-        } else return [];
+        } else return undefined;
     }
 
     static filter(arr, callback){
@@ -87,7 +87,7 @@ class ArrLib {
             }
 
             return result;
-        } else return [];
+        } else return arr;
     }
 
     static foreach(arr, callback){
