@@ -3,6 +3,10 @@ class ArrLib {
         this.arr = arr;
     }
 
+    static isValid(arr, callback){
+        return (Array.isArray(arr) && typeof(callback) === 'function') ? true : false;
+    }
+
     static chain(arr){
         return (Array.isArray(arr) && arr.length > 0) ? new ArrLib(arr) : arr;
     }
@@ -56,7 +60,7 @@ class ArrLib {
     }
 
     static map(arr, callback){
-        if(Array.isArray(arr) && typeof(callback) === 'function'){
+        if(ArrLib.isValid(arr, callback)){
             let result = [];
             for(let i = 0; i < arr.length; i++){
                 result.push(callback(arr[i], i, arr))
@@ -67,7 +71,7 @@ class ArrLib {
     }
 
     static reduce(arr, callback, initialValue){
-        if(Array.isArray(arr) && typeof(callback) === 'function' && initialValue !== undefined){
+        if(ArrLib.isValid(arr, callback)){
             let res = initialValue;
             for(let i = 0; i < arr.length; i++){ 
                 res = callback(res, arr[i], i, arr);
@@ -78,7 +82,7 @@ class ArrLib {
     }
 
     static filter(arr, callback){
-        if(Array.isArray(arr) && typeof(callback) === 'function'){
+        if(ArrLib.isValid(arr, callback)){
             let result = [];
             for(let i = 0; i < arr.length; i++){
                 if(callback(arr[i], i, arr)){
@@ -91,7 +95,7 @@ class ArrLib {
     }
 
     static foreach(arr, callback){
-        if(Array.isArray(arr) && typeof(callback) === 'function'){
+        if(ArrLib.isValid(arr, callback)){
             for(let i = 0; i < arr.length; i++){
                 callback(arr[i], i, arr);
             }
