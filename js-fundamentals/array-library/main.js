@@ -78,7 +78,7 @@ class ArrLib {
     }
 
     static filter(arr, callback){
-        if(Array.isArray(arr && typeof(callback) === 'function')){
+        if(Array.isArray(arr) && typeof(callback) === 'function'){
             let result = [];
             for(let i = 0; i < arr.length; i++){
                 if(callback(arr[i], i, arr)){
