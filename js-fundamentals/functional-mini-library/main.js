@@ -1,18 +1,29 @@
 class FuncLib {
-    static first(arr) {
+    constructor(){
+        this.array = [];
+    }
+
+    static asChain(arr){
+        this.array = arr;
+        return this;
+    }
+
+    static first(arr = this.array) {
         return arr[0];
     }
 
-    static last(arr) {
+    static last(arr = this.array) {
         return arr[arr.length - 1];
     }
 
-    static skip(arr, number) {
-        return Array.from(arr).slice(number);
+    static skip(arr = this.array, number) {
+        this.array = Array.from(arr).slice(number);
+        return this;
     }
 
-    static take(arr, number) {
-        return Array.from(arr).slice(0, number); 
+    static take(arr = this.array, number) {
+        this.array = Array.from(arr).slice(0, number); 
+        return this;
     }
 
     static isArray(obj) {
