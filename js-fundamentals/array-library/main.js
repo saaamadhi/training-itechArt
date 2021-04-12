@@ -29,12 +29,6 @@ class ArrLib {
         return this;
     }
 
-    reduce(callback, initialValue){
-        this.arr = ArrLib.reduce(this.arr, callback, initialValue);
-
-        return this;
-    }
-
     filter(callback){
         this.arr = ArrLib.filter(this.arr, callback);
 
