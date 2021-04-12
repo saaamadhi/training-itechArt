@@ -4,7 +4,7 @@ class ArrLib {
     }
 
     static chain(arr){
-        return new ArrLib(arr); 
+        return (Array.isArray(arr) && arr.length > 0) ? new ArrLib(arr) : [];
     }
 
     value(){
@@ -12,13 +12,13 @@ class ArrLib {
     }
 
     take(n){
-        this.arr = Array.from(this.arr).slice(0, n);
+        this.arr = ArrLib.take(this.arr, n);
 
         return this;
     }
 
     skip(n){
-        this.arr = Array.from(this.arr).slice(n);
+        this.arr = ArrLib.skip(this.arr, n);
 
         return this;
     }
@@ -48,42 +48,59 @@ class ArrLib {
     }
 
     static take(arr, n){
-        return Array.from(arr).slice(0, n);
+        if(Array.isArray(arr)){
+
+            return Array.from(arr).slice(0, n);
+        }
     }
 
     static skip(arr, n){
-        return Array.from(arr).slice(n);
+        if(Array.isArray(arr)){
+
+            return Array.from(arr).slice(n);
+        }
     }
 
     static map(arr, callback){
-        let result = [];
-        for(let i = 0; i < arr.length; i++){
-            result.push(callback(arr[i], i, arr))
-        }
-        return result;
+        if(Array.isArray(arr) && typeof(callback) === 'function'){
+            let result = [];
+            for(let i = 0; i < arr.length; i++){
+                result.push(callback(arr[i], i, arr))
+            }
+
+            return result;
+        } else return [];
     }
 
     static reduce(arr, callback, initialValue){
-        let res = initialValue;
-        for(let i = 0; i < arr.length; i++){ 
-            res = callback(res, arr[i], i, arr);
-        }
-        return res;
+        if(Array.isArray(arr) && typeof(callback) === 'function' && initialValue !== undefined){
+            let res = initialValue;
+            for(let i = 0; i < arr.length; i++){ 
+                res = callback(res, arr[i], i, arr);
+            }
+
+            return res;
+        } else return [];
     }
 
     static filter(arr, callback){
-        let result = [];
-        for(let i = 0; i < arr.length; i++){
-            if(callback(arr[i], i, arr)){
-                result.push(arr[i])
+        if(Array.isArray(arr && typeof(callback) === 'function')){
+            let result = [];
+            for(let i = 0; i < arr.length; i++){
+                if(callback(arr[i], i, arr)){
+                    result.push(arr[i])
+                }
             }
-        }
-        return result;
+
+            return result;
+        } else return [];
     }
 
     static foreach(arr, callback){
-        for(let i = 0; i < arr.length; i++){
-            callback(arr[i], i, arr);
-        }
+        if(Array.isArray(arr) && typeof(callback) === 'function'){
+            for(let i = 0; i < arr.length; i++){
+                callback(arr[i], i, arr);
+            }
+        } else return [];
     }
 }
