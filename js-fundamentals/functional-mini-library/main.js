@@ -1,67 +1,49 @@
 class FuncLib {
-    constructor (arr = ''){
-        this.arr = arr;
-        this.perem = 0;
+    static first(arr) {
+        return arr[0];
     }
 
-    first() {
-        this.perem = this.arr[0];
-    
-        return this;
+    static last(arr) {
+        return arr[arr.length - 1];
     }
 
-    last() {
-        this.perem = this.arr[this.arr.length - 1];
-
-        return this;
+    static skip(arr, number) {
+        return Array.from(arr).slice(number);
     }
 
-    skip(number) {
-        this.arr = Array.from(this.arr).slice(number);
-
-        return this;
+    static take(arr, number) {
+        return Array.from(arr).slice(0, number); 
     }
 
-    take(number) {
-        this.arr = Array.from(this.arr).slice(0, number);
-
-        return this;
-    }
-
-    isArray(obj) {
+    static isArray(obj) {
         return obj instanceof Array;
     }
 
-    isBoolean(obj){
+    static isBoolean(obj){
         return !!obj === obj;
     }
 
-    isDate(obj){ 
+    static isDate(obj){ 
         return obj instanceof Date;
     }
 
-    isNumber(obj){ 
+    static isNumber(obj){ 
         return Object.prototype.toString.call(obj) === "[object Number]";
     }
 
-    isString(obj){
+    static isString(obj){
         return typeof(obj) === 'string';
     } 
 
-    isFunction(obj){
+    static isFunction(obj){
         return typeof(obj) === 'function';
     }
 
-    isUndefined(obj){
+    static isUndefined(obj){
         return obj === undefined;
     } 
 
-    isNull(obj) {
+    static isNull(obj) {
         return obj === null;
     }
 }
-
-const instance1 = new FuncLib([2, 32, 56, 1, 4, 5, 8, 45, 38]);
-const instance2 = new FuncLib();
-instance1.take(5).last();
-instance2.isArray([1, 2, 3]);
