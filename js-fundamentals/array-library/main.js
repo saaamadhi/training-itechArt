@@ -8,10 +8,9 @@ class ArrLib {
 
         value(){
             let result = this.arr;
-            while(this.executionQueue.length > 0){
-                let executionQueueItem = this.executionQueue.shift();
-                result = executionQueueItem.function(result, ...executionQueueItem.args)
-            }
+            this.executionQueue.forEach((item) => {
+                result = item.function(result, ...item.args)
+            })
             return result;
         }
 
@@ -40,8 +39,8 @@ class ArrLib {
         }
 
         reduce(callback, initialValue){
-            ArrLib.reduce(this.arr, callback, initialValue);
-            
+            this.executionQueue.push({function: ArrLib.reduce, args: [callback, initialValue]});
+    
             return this;
         }
     
@@ -89,7 +88,6 @@ class ArrLib {
             for(let i = 0; i < arr.length; i++){ 
                 res = callback(res, arr[i], i, arr);
             }
-
             return res;
         } else return undefined;
     }
