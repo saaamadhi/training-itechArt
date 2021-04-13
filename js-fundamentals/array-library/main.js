@@ -1,10 +1,8 @@
 class ArrLib {
-    constructor(arr){
-        this.arr = arr;
-    }
 
-    Chain = class {
-        constructor(){
+    static Chain = class {
+        constructor(arr){
+            this.arr = arr;
             this.executionQueue = [];
         }
 
@@ -21,32 +19,40 @@ class ArrLib {
         }
 
         take(n){
-            this.executionQueue.push(ArrLib.pushFooNParams(ArrLib.take, this, [this.arr, n]));
+            this.executionQueue.push(ArrLib.Chain.pushFooNParams(ArrLib.take, this, [this.arr, n]));
     
             return this;
         }
 
         skip(n){
-            this.executionQueue.push(ArrLib.pushFooNParams(ArrLib.skip, this, [this.arr, n]));
+            this.executionQueue.push(ArrLib.Chain.pushFooNParams(ArrLib.skip, this, [this.arr, n]));
     
             return this;
         }
     
         map(callback){
-            this.executionQueue.push(ArrLib.pushFooNParams(ArrLib.map, this, [this.arr, callback]));
+            this.executionQueue.push(ArrLib.Chain.pushFooNParams(ArrLib.map, this, [this.arr, callback]));
     
             return this;
         }
     
         filter(callback){
-            this.executionQueue.push(ArrLib.pushFooNParams(ArrLib.filter, this, [this.arr, callback]));
+            this.executionQueue.push(ArrLib.Chain.pushFooNParams(ArrLib.filter, this, [this.arr, callback]));
     
             return this;
+        }
+
+        reduce(callback, initialValue){
+            ArrLib.reduce(this.arr, callback, initialValue);
+        }
+    
+        foreach(callback){
+            ArrLib.foreach(this.arr, callback);
         }
     }
 
     static chain(arr){
-        return (Array.isArray(arr) && arr.length > 0) ? new ArrLib(arr) : arr;
+        return (Array.isArray(arr) && arr.length > 0) ? new ArrLib.Chain(arr) : arr;
     }
 
     static take(arr, n){
@@ -59,15 +65,6 @@ class ArrLib {
     static isValid(arr, callback){
         return (Array.isArray(arr) && typeof(callback) === 'function') ? true : false;
     }
-
-    reduce(callback, initialValue){
-        ArrLib.reduce(this.arr, callback, initialValue);
-    }
-
-    foreach(callback){
-        ArrLib.foreach(this.arr, callback);
-    }
-
 
     static skip(arr, n){
         if(Array.isArray(arr)){
