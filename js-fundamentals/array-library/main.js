@@ -1,10 +1,7 @@
 class ArrLib {
     constructor(arr){
         this.arr = arr;
-    }
-
-    static isValid(arr, callback){
-        return (Array.isArray(arr) && typeof(callback) === 'function') ? true : false;
+        this.executionQueue = [];
     }
 
     static chain(arr){
@@ -12,13 +9,32 @@ class ArrLib {
     }
 
     value(){
-        return this.arr;
+        let result = this.arr;
+        while(this.executionQueue.length > 0){
+            result = (this.executionQueue.shift())();
+        }
+        return result;
+    }
+
+    static pushFooNParams(foo, context, params){
+        return foo.bind(context, params)
     }
 
     take(n){
-        this.arr = ArrLib.take(this.arr, n);
+        this.executionQueue.push(ArrLib.pushFooNParams(ArrLib.take, this, [this.arr, n]));
 
         return this;
+    }
+
+    static take(arr, n){
+        if(Array.isArray(arr)){
+
+            return Array.from(arr).slice(0, n);
+        }
+    }
+
+    static isValid(arr, callback){
+        return (Array.isArray(arr) && typeof(callback) === 'function') ? true : false;
     }
 
     skip(n){
@@ -39,18 +55,14 @@ class ArrLib {
         return this;
     }
 
+    reduce(callback, initialValue){
+        ArrLib.reduce(this.arr, callback, initialValue);
+    }
+
     foreach(callback){
-        this.arr = ArrLib.foreach(this.arr, callback);
-
-        return this;
+        ArrLib.foreach(this.arr, callback);
     }
 
-    static take(arr, n){
-        if(Array.isArray(arr)){
-
-            return Array.from(arr).slice(0, n);
-        }
-    }
 
     static skip(arr, n){
         if(Array.isArray(arr)){
