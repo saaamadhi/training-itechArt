@@ -1,29 +1,52 @@
 class ArrLib {
     constructor(arr){
         this.arr = arr;
-        this.executionQueue = [];
+    }
+
+    Chain = class {
+        constructor(){
+            this.executionQueue = [];
+        }
+
+        static pushFooNParams(foo, context, params){
+            return foo.bind(context, params)
+        }
+
+        value(){
+            let result = this.arr;
+            while(this.executionQueue.length > 0){
+                result = (this.executionQueue.shift())();
+            }
+            return result;
+        }
+
+        take(n){
+            this.executionQueue.push(ArrLib.pushFooNParams(ArrLib.take, this, [this.arr, n]));
+    
+            return this;
+        }
+
+        skip(n){
+            this.executionQueue.push(ArrLib.pushFooNParams(ArrLib.skip, this, [this.arr, n]));
+    
+            return this;
+        }
+    
+        map(callback){
+            this.executionQueue.push(ArrLib.pushFooNParams(ArrLib.map, this, [this.arr, callback]));
+    
+            return this;
+        }
+    
+        filter(callback){
+            this.executionQueue.push(ArrLib.pushFooNParams(ArrLib.filter, this, [this.arr, callback]));
+    
+            return this;
+        }
     }
 
     static chain(arr){
         return (Array.isArray(arr) && arr.length > 0) ? new ArrLib(arr) : arr;
-    }
-
-    value(){
-        let result = this.arr;
-        while(this.executionQueue.length > 0){
-            result = (this.executionQueue.shift())();
-        }
-        return result;
-    }
-
-    static pushFooNParams(foo, context, params){
-        return foo.bind(context, params)
-    }
-
-    take(n){
-        this.executionQueue.push(ArrLib.pushFooNParams(ArrLib.take, this, [this.arr, n]));
-
-        return this;
     }
 
     static take(arr, n){
@@ -35,24 +58,6 @@ class ArrLib {
 
     static isValid(arr, callback){
         return (Array.isArray(arr) && typeof(callback) === 'function') ? true : false;
-    }
-
-    skip(n){
-        this.arr = ArrLib.skip(this.arr, n);
-
-        return this;
-    }
-
-    map(callback){
-        this.arr = ArrLib.map(this.arr, callback);
-
-        return this;
-    }
-
-    filter(callback){
-        this.arr = ArrLib.filter(this.arr, callback);
-
-        return this;
     }
 
     reduce(callback, initialValue){
