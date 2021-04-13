@@ -6,44 +6,43 @@ class ArrLib {
             this.executionQueue = [];
         }
 
-        static pushFooNParams(foo, context, params){
-            return foo.bind(context, params)
-        }
-
         value(){
             let result = this.arr;
             while(this.executionQueue.length > 0){
-                result = (this.executionQueue.shift())();
+                let executionQueueItem = this.executionQueue.shift();
+                result = executionQueueItem.function(result, ...executionQueueItem.args)
             }
             return result;
         }
 
         take(n){
-            this.executionQueue.push(ArrLib.Chain.pushFooNParams(ArrLib.take, this, [this.arr, n]));
+            this.executionQueue.push({function: ArrLib.take, args: [n]});
     
             return this;
         }
 
         skip(n){
-            this.executionQueue.push(ArrLib.Chain.pushFooNParams(ArrLib.skip, this, [this.arr, n]));
+            this.executionQueue.push({function: ArrLib.skip, args: [n]});
     
             return this;
         }
     
         map(callback){
-            this.executionQueue.push(ArrLib.Chain.pushFooNParams(ArrLib.map, this, [this.arr, callback]));
+            this.executionQueue.push({function: ArrLib.map, args: [callback]});
     
             return this;
         }
     
         filter(callback){
-            this.executionQueue.push(ArrLib.Chain.pushFooNParams(ArrLib.filter, this, [this.arr, callback]));
+            this.executionQueue.push({function: ArrLib.filter, args: [callback]});
     
             return this;
         }
 
         reduce(callback, initialValue){
             ArrLib.reduce(this.arr, callback, initialValue);
+            
+            return this;
         }
     
         foreach(callback){
