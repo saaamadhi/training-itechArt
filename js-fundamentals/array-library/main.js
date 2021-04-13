@@ -39,9 +39,9 @@ class ArrLib {
         }
 
         reduce(callback, initialValue){
-            this.executionQueue.push({function: ArrLib.reduce, args: [callback, initialValue]});
+            let value = ArrLib.reduce(this.arr, callback, initialValue);
     
-            return this;
+            return value;
         }
     
         foreach(callback){
