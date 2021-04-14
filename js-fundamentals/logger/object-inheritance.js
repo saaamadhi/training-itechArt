@@ -1,23 +1,23 @@
 const BaseLogger = {
-    log1: function(message) {
+    log: function(message) {
         console.log(message);
     }
 }
 
 const TableLogger = {
-    log2: function(...messages) {
-        TableLogger.log1(messages.join(' | '));
+    log: function(...messages) {
+        Object.getPrototypeOf(TableLogger).log(messages.join(' | '));
     },
 }
 
 Object.setPrototypeOf(TableLogger, BaseLogger);
 
 const TableTimeLogger = {
-    log3: function(...messages) {
+    log: function(...messages) {
         const date = new Date().toLocaleDateString("en-US").split(" ").join('/');
         const time = new Date().toLocaleTimeString("en-US").split(" ").join(' ');
         const dateAndTime = date + ', ' + time;
-        TableTimeLogger.log2(dateAndTime, ...messages)
+        Object.getPrototypeOf(TableTimeLogger).log(dateAndTime, ...messages)
     }
 }
 
