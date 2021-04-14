@@ -1,20 +1,22 @@
 BaseLogger = {
-    log: function(message) {
+    log1: function(message) {
         console.log(message);
     }
 }
 
 TableLogger = {
-    log: function(...messages) {
-        BaseLogger.log(messages.join(' | '));
-    }
+    log2: function(...messages) {
+        TableLogger.log1(messages.join(' | '));
+    },
+    __proto__: BaseLogger
 }
 
 TableTimeLogger = {
-    log: function(...messages) {
+    log3: function(...messages) {
         const date = new Date().toLocaleDateString("en-US").split(" ").join('/');
         const time = new Date().toLocaleTimeString("en-US").split(" ").join(' ');
         const dateAndTime = date + ', ' + time;
-        TableLogger.log(dateAndTime, ...messages)
-    }
+        TableTimeLogger.log2(dateAndTime, ...messages)
+    },
+    __proto__: TableLogger
 }
