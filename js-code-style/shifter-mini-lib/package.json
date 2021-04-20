@@ -5,7 +5,7 @@
   "main": "shifter.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "npx eslint shifter.js"
+    "lint": "./node_modules/.bin/eslint app.js"
   },
   "author": "",
   "license": "ISC",
