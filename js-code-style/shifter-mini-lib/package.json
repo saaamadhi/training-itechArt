@@ -1,0 +1,21 @@
+{
+  "name": "shifter-mini-lib",
+  "version": "1.0.0",
+  "main": "shifter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint shifter.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  },
+  "dependencies": {
+    "sifter": "^0.5.4"
+  },
+  "keywords": [],
+  "description": ""
+}
