@@ -14,16 +14,16 @@
  * @author Brian Reavis <brian@thirdroute.com>
  */
 
-(function(root, factory) {
+(function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(factory);
   } else if (typeof exports === 'object') {
     module.exports = factory();
   } else {
-    root.Sifter = factory();
+    const rootEl = root;
+    rootEl.Sifter = factory();
   }
-}(this, function() {
-
+}(this, () => {
   /**
    * Textually searches arrays and hashes of objects
    * by property (or multiple properties). Designed
@@ -33,9 +33,9 @@
    * @param {array|object} items
    * @param {object} items
    */
-  var Sifter = function(items, settings) {
+  const Sifter = function (items, settings) {
     this.items = items;
-    this.settings = settings || {diacritics: true};
+    this.settings = settings || { diacritics: true };
   };
 
   /**
@@ -45,27 +45,29 @@
    * @param {string} query
    * @returns {array}
    */
-  Sifter.prototype.tokenize = function(query, respect_word_boundaries) {
-    query = trim(String(query || '').toLowerCase());
-    if (!query || !query.length) return [];
+  Sifter.prototype.tokenize = function (query, respect_word_boundaries) {
+    let queryEl = query;
+    queryEl = trim(String(queryEl || '').toLowerCase());
+    if (!queryEl || !queryEl.length) return [];
 
-    var i, n, regex, letter;
-    var tokens = [];
-    var words = query.split(/ +/);
+    let i; let n; let regex; let
+      letter;
+    const tokens = [];
+    const words = queryEl.split(/ +/);
 
     for (i = 0, n = words.length; i < n; i++) {
     	regex = escape_regex(words[i]);
     	if (this.settings.diacritics) {
     		for (letter in DIACRITICS) {
-    			if (DIACRITICS.hasOwnProperty(letter)) {
+    			if (Object.prototype.hasOwnProperty.call(DIACRITICS, letter)) {
     				regex = regex.replace(new RegExp(letter, 'g'), DIACRITICS[letter]);
     			}
     		}
     	}
-    	if (respect_word_boundaries) regex = "\\b"+regex
+    	if (respect_word_boundaries) regex = `\\b${regex}`;
     	tokens.push({
-    		string : words[i],
-    		regex  : new RegExp(regex, 'i')
+    		string: words[i],
+    		regex: new RegExp(regex, 'i'),
     	});
     }
 
@@ -83,18 +85,18 @@
    *
    * @param {array|object} object
    */
-  Sifter.prototype.iterator = function(object, callback) {
-    var iterator;
+  Sifter.prototype.iterator = function (object, callback) {
+    let iterator;
     if (is_array(object)) {
-    	iterator = Array.prototype.forEach || function(callback) {
-    		for (var i = 0, n = this.length; i < n; i++) {
+    	iterator = Array.prototype.forEach || function (callback) {
+    		for (let i = 0, n = this.length; i < n; i++) {
     			callback(this[i], i, this);
     		}
     	};
     } else {
-    	iterator = function(callback) {
-    		for (var key in this) {
-    			if (this.hasOwnProperty(key)) {
+    	iterator = function (callback) {
+    		for (const key in this) {
+    			if (Object.prototype.hasOwnProperty.call(this, key)) {
     				callback(this[key], key, this);
     			}
     		}
@@ -114,15 +116,16 @@
    * @param {object} options (optional)
    * @returns {function}
    */
-  Sifter.prototype.getScoreFunction = function(search, options) {
-    var self, fields, tokens, token_count, nesting;
+  Sifter.prototype.getScoreFunction = function (search, options) {
+    let self; let fields; let tokens; let token_count; let
+      nesting; let searchEl = search;
 
-    self        = this;
-    search      = self.prepareSearch(search, options);
-    tokens      = search.tokens;
-    fields      = search.options.fields;
+    self = this;
+    searchEl = self.prepareSearch(searchEl, options);
+    tokens = searchEl.tokens;
+    fields = searchEl.options.fields;
     token_count = tokens.length;
-    nesting     = search.options.nesting;
+    nesting = searchEl.options.nesting;
 
     /**
      * Calculates how close of a match the
@@ -132,14 +135,15 @@
      * @param {object} token
      * @return {number}
      */
-    var scoreValue = function(value, token) {
-    	var score, pos;
+    const scoreValue = function (value, token) {
+    	let score; let
+        pos; let valueEl = value;
 
-    	if (!value) return 0;
-    	value = String(value || '');
-    	pos = value.search(token.regex);
+    	if (!valueEl) return 0;
+    	valueEl = String(valueEl || '');
+    	pos = valueEl.searchEl(token.regex);
     	if (pos === -1) return 0;
-    	score = token.string.length / value.length;
+    	score = token.string.length / valueEl.length;
     	if (pos === 0) score += 0.5;
     	return score;
     };
@@ -152,51 +156,56 @@
      * @param {object} data
      * @return {number}
      */
-    var scoreObject = (function() {
-    	var field_count = fields.length;
+    const scoreObject = (function () {
+    	const field_count = fields.length;
     	if (!field_count) {
-    		return function() { return 0; };
+    		return function () { return 0; };
     	}
     	if (field_count === 1) {
-    		return function(token, data) {
+    		return function (token, data) {
     			return scoreValue(getattr(data, fields[0], nesting), token);
     		};
     	}
-    	return function(token, data) {
-    		for (var i = 0, sum = 0; i < field_count; i++) {
+    	return function (token, data) {
+        var i;
+        var sum;
+    		for (i = 0, sum = 0; i < field_count; i++) {
     			sum += scoreValue(getattr(data, fields[i], nesting), token);
     		}
     		return sum / field_count;
     	};
-    })();
+    }());
 
     if (!token_count) {
-    	return function() { return 0; };
+    	return function () { return 0; };
     }
     if (token_count === 1) {
-    	return function(data) {
+    	return function (data) {
     		return scoreObject(tokens[0], data);
     	};
     }
 
-    if (search.options.conjunction === 'and') {
-    	return function(data) {
-    		var score;
-    		for (var i = 0, sum = 0; i < token_count; i++) {
+    if (searchEl.options.conjunction === 'and') {
+    	return function (data) {
+    		let score;
+        var i;
+        var sum;
+    		for (i = 0, sum = 0; i < token_count; i++) {
     			score = scoreObject(tokens[i], data);
     			if (score <= 0) return 0;
     			sum += score;
     		}
     		return sum / token_count;
     	};
-    } else {
-    	return function(data) {
-    		for (var i = 0, sum = 0; i < token_count; i++) {
-    			sum += scoreObject(tokens[i], data);
-    		}
-    		return sum / token_count;
-    	};
     }
+    return function (data) {
+      var i;
+      var sum;
+    	for (i = 0, sum = 0; i < token_count; i++) {
+    		sum += scoreObject(tokens[i], data);
+    	}
+    	return sum / token_count;
+    };
   };
 
   /**
@@ -208,12 +217,13 @@
    * @param {object} options
    * @return function(a,b)
    */
-  Sifter.prototype.getSortFunction = function(search, options) {
-    var i, n, self, field, fields, fields_count, multiplier, multipliers, get_field, implicit_score, sort;
+  Sifter.prototype.getSortFunction = function (search, options) {
+    let i; let n; let self; let field; let fields; let fields_count; let multiplier; let multipliers; let get_field; let implicit_score; let
+      sort; let searchEl = search;
 
-    self   = this;
-    search = self.prepareSearch(search, options);
-    sort   = (!search.query && options.sort_empty) || options.sort;
+    self = this;
+    searchEl = self.prepareSearch(searchEl, options);
+    sort = (!searchEl.query && options.sort_empty) || options.sort;
 
     /**
      * Fetches the specified sort field value
@@ -223,7 +233,7 @@
      * @param  {object} result
      * @return {mixed}
      */
-    get_field = function(name, result) {
+    get_field = function (name, result) {
     	if (name === '$score') return result.score;
     	return getattr(self.items[result.id], name, options.nesting);
     };
@@ -232,7 +242,7 @@
     fields = [];
     if (sort) {
     	for (i = 0, n = sort.length; i < n; i++) {
-    		if (search.query || sort[i].field !== '$score') {
+    		if (searchEl.query || sort[i].field !== '$score') {
     			fields.push(sort[i]);
     		}
     	}
@@ -240,7 +250,7 @@
 
     // the "$score" field is implied to be the primary
     // sort field, unless it's manually specified
-    if (search.query) {
+    if (searchEl.query) {
     	implicit_score = true;
     	for (i = 0, n = fields.length; i < n; i++) {
     		if (fields[i].field === '$score') {
@@ -249,7 +259,7 @@
     		}
     	}
     	if (implicit_score) {
-    		fields.unshift({field: '$score', direction: 'desc'});
+    		fields.unshift({ field: '$score', direction: 'desc' });
     	}
     } else {
     	for (i = 0, n = fields.length; i < n; i++) {
@@ -269,29 +279,28 @@
     fields_count = fields.length;
     if (!fields_count) {
     	return null;
-    } else if (fields_count === 1) {
+    } if (fields_count === 1) {
     	field = fields[0].field;
     	multiplier = multipliers[0];
-    	return function(a, b) {
+    	return function (a, b) {
     		return multiplier * cmp(
     			get_field(field, a),
-    			get_field(field, b)
+    			get_field(field, b),
     		);
     	};
-    } else {
-    	return function(a, b) {
-    		var i, result, a_value, b_value, field;
+    }
+    	return function (a, b) {
+    		let i; let result; let field;
     		for (i = 0; i < fields_count; i++) {
     			field = fields[i].field;
     			result = multipliers[i] * cmp(
     				get_field(field, a),
-    				get_field(field, b)
+    				get_field(field, b),
     			);
     			if (result) return result;
     		}
     		return 0;
     	};
-    }
   };
 
   /**
@@ -303,25 +312,26 @@
    * @param {object} options
    * @returns {object}
    */
-  Sifter.prototype.prepareSearch = function(query, options) {
+  Sifter.prototype.prepareSearch = function (query, options) {
+    let optionEls = options;
     if (typeof query === 'object') return query;
 
-    options = extend({}, options);
+    optionEls = extend({}, optionEls);
 
-    var option_fields     = options.fields;
-    var option_sort       = options.sort;
-    var option_sort_empty = options.sort_empty;
+    const option_fields = optionEls.fields;
+    const option_sort = optionEls.sort;
+    const option_sort_empty = optionEls.sort_empty;
 
-    if (option_fields && !is_array(option_fields)) options.fields = [option_fields];
-    if (option_sort && !is_array(option_sort)) options.sort = [option_sort];
-    if (option_sort_empty && !is_array(option_sort_empty)) options.sort_empty = [option_sort_empty];
+    if (option_fields && !is_array(option_fields)) optionEls.fields = [option_fields];
+    if (option_sort && !is_array(option_sort)) optionEls.sort = [option_sort];
+    if (option_sort_empty && !is_array(option_sort_empty)) optionEls.sort_empty = [option_sort_empty];
 
     return {
-    	options : options,
-    	query   : String(query || '').toLowerCase(),
-    	tokens  : this.tokenize(query, options.respect_word_boundaries),
-    	total   : 0,
-    	items   : []
+    	optionEls,
+    	query: String(query || '').toLowerCase(),
+    	tokens: this.tokenize(query, optionEls.respect_word_boundaries),
+    	total: 0,
+    	items: [],
     };
   };
 
@@ -348,39 +358,41 @@
    * @param {object} options
    * @returns {object}
    */
-  Sifter.prototype.search = function(query, options) {
-    var self = this, value, score, search, calculateScore;
-    var fn_sort;
-    var fn_score;
+  Sifter.prototype.search = function (query, options) {
+    const self = this; let score; let search;
+    let fn_sort;
+    let fn_score;
+    let optionsEl = options;
+    let queryEl = query;
 
-    search  = this.prepareSearch(query, options);
-    options = search.options;
-    query   = search.query;
+    search = this.prepareSearch(queryEl, optionsEl);
+    optionsEl = search.optionsEl;
+    queryEl = search.queryEl;
 
     // generate result scoring function
-    fn_score = options.score || self.getScoreFunction(search);
+    fn_score = optionsEl.score || self.getScoreFunction(search);
 
     // perform search and sort
-    if (query.length) {
-    	self.iterator(self.items, function(item, id) {
+    if (queryEl.length) {
+    	self.iterator(self.items, (item, id) => {
     		score = fn_score(item);
-    		if (options.filter === false || score > 0) {
-    			search.items.push({'score': score, 'id': id});
+    		if (optionsEl.filter === false || score > 0) {
+    			search.items.push({ score, id });
     		}
     	});
     } else {
-    	self.iterator(self.items, function(item, id) {
-    		search.items.push({'score': 1, 'id': id});
+    	self.iterator(self.items, (item, id) => {
+    		search.items.push({ score: 1, id });
     	});
     }
 
-    fn_sort = self.getSortFunction(search, options);
+    fn_sort = self.getSortFunction(search, optionsEl);
     if (fn_sort) search.items.sort(fn_sort);
 
     // apply limits
     search.total = search.items.length;
-    if (typeof options.limit === 'number') {
-    	search.items = search.items.slice(0, options.limit);
+    if (typeof optionsEl.limit === 'number') {
+    	search.items = search.items.slice(0, optionsEl.limit);
     }
 
     return search;
@@ -389,29 +401,32 @@
   // utilities
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  var cmp = function(a, b) {
-    if (typeof a === 'number' && typeof b === 'number') {
-    	return a > b ? 1 : (a < b ? -1 : 0);
+  var cmp = function (a, b) {
+    let aEl = a;
+    let bEl = b;
+    if (typeof aEl === 'number' && typeof bEl === 'number') {
+    	return aEl > bEl ? 1 : (aEl < bEl ? -1 : 0);
     }
-    a = asciifold(String(a || ''));
-    b = asciifold(String(b || ''));
-    if (a > b) return 1;
-    if (b > a) return -1;
+    aEl = asciifold(String(aEl || ''));
+    bEl = asciifold(String(bEl || ''));
+    if (aEl > bEl) return 1;
+    if (bEl > aEl) return -1;
     return 0;
   };
 
-  var extend = function(a, b) {
-    var i, n, k, object;
+  var extend = function (a) {
+    let i; let n; let k; let
+      object; const aEl = a;
     for (i = 1, n = arguments.length; i < n; i++) {
     	object = arguments[i];
     	if (!object) continue;
     	for (k in object) {
-    		if (object.hasOwnProperty(k)) {
-    			a[k] = object[k];
+    		if (Object.prototype.hasOwnProperty.call(object, k)) {
+    			aEl[k] = object[k];
     		}
     	}
     }
-    return a;
+    return aEl;
   };
 
   /**
@@ -421,60 +436,63 @@
    * @param  {Boolean} nesting Handle nesting or not
    * @return {Object}          The resolved property value
    */
-  var getattr = function(obj, name, nesting) {
-      if (!obj || !name) return;
-      if (!nesting) return obj[name];
-      var names = name.split(".");
-      while(names.length && (obj = obj[names.shift()]));
-      return obj;
+  var getattr = function (obj, name, nesting) {
+    let objEl = obj;
+    if (!objEl || !name) return;
+    if (!nesting) return objEl[name];
+    const names = name.split('.');
+    objEl = objEl[names.shift()];
+    while (names.length && (objEl));
+    return objEl;
   };
 
-  var trim = function(str) {
-    return (str + '').replace(/^\s+|\s+$|/g, '');
+  var trim = function (str) {
+    return (`${str}`).replace(/^\s+|\s+$|/g, '');
   };
 
-  var escape_regex = function(str) {
-    return (str + '').replace(/([.?*+^$[\]\\(){}|-])/g, '\\$1');
+  var escape_regex = function (str) {
+    return (`${str}`).replace(/([.?*+^$[\]\\(){}|-])/g, '\\$1');
   };
 
-  var is_array = Array.isArray || (typeof $ !== 'undefined' && $.isArray) || function(object) {
+  var is_array = Array.isArray || (typeof $ !== 'undefined' && $.isArray) || function (object) {
     return Object.prototype.toString.call(object) === '[object Array]';
   };
 
   var DIACRITICS = {
-    'a': '[aḀḁĂăÂâǍǎȺⱥȦȧẠạÄäÀàÁáĀāÃãÅåąĄÃąĄ]',
-    'b': '[b␢βΒB฿𐌁ᛒ]',
-    'c': '[cĆćĈĉČčĊċC̄c̄ÇçḈḉȻȼƇƈɕᴄＣｃ]',
-    'd': '[dĎďḊḋḐḑḌḍḒḓḎḏĐđD̦d̦ƉɖƊɗƋƌᵭᶁᶑȡᴅＤｄð]',
-    'e': '[eÉéÈèÊêḘḙĚěĔĕẼẽḚḛẺẻĖėËëĒēȨȩĘęᶒɆɇȄȅẾếỀềỄễỂểḜḝḖḗḔḕȆȇẸẹỆệⱸᴇＥｅɘǝƏƐε]',
-    'f': '[fƑƒḞḟ]',
-    'g': '[gɢ₲ǤǥĜĝĞğĢģƓɠĠġ]',
-    'h': '[hĤĥĦħḨḩẖẖḤḥḢḣɦʰǶƕ]',
-    'i': '[iÍíÌìĬĭÎîǏǐÏïḮḯĨĩĮįĪīỈỉȈȉȊȋỊịḬḭƗɨɨ̆ᵻᶖİiIıɪＩｉ]',
-    'j': '[jȷĴĵɈɉʝɟʲ]',
-    'k': '[kƘƙꝀꝁḰḱǨǩḲḳḴḵκϰ₭]',
-    'l': '[lŁłĽľĻļĹĺḶḷḸḹḼḽḺḻĿŀȽƚⱠⱡⱢɫɬᶅɭȴʟＬｌ]',
-    'n': '[nŃńǸǹŇňÑñṄṅŅņṆṇṊṋṈṉN̈n̈ƝɲȠƞᵰᶇɳȵɴＮｎŊŋ]',
-    'o': '[oØøÖöÓóÒòÔôǑǒŐőŎŏȮȯỌọƟɵƠơỎỏŌōÕõǪǫȌȍՕօ]',
-    'p': '[pṔṕṖṗⱣᵽƤƥᵱ]',
-    'q': '[qꝖꝗʠɊɋꝘꝙq̃]',
-    'r': '[rŔŕɌɍŘřŖŗṘṙȐȑȒȓṚṛⱤɽ]',
-    's': '[sŚśṠṡṢṣꞨꞩŜŝŠšŞşȘșS̈s̈]',
-    't': '[tŤťṪṫŢţṬṭƮʈȚțṰṱṮṯƬƭ]',
-    'u': '[uŬŭɄʉỤụÜüÚúÙùÛûǓǔŰűŬŭƯưỦủŪūŨũŲųȔȕ∪]',
-    'v': '[vṼṽṾṿƲʋꝞꝟⱱʋ]',
-    'w': '[wẂẃẀẁŴŵẄẅẆẇẈẉ]',
-    'x': '[xẌẍẊẋχ]',
-    'y': '[yÝýỲỳŶŷŸÿỸỹẎẏỴỵɎɏƳƴ]',
-    'z': '[zŹźẐẑŽžŻżẒẓẔẕƵƶ]'
+    a: '[aḀḁĂăÂâǍǎȺⱥȦȧẠạÄäÀàÁáĀāÃãÅåąĄÃąĄ]',
+    b: '[b␢βΒB฿𐌁ᛒ]',
+    c: '[cĆćĈĉČčĊċC̄c̄ÇçḈḉȻȼƇƈɕᴄＣｃ]',
+    d: '[dĎďḊḋḐḑḌḍḒḓḎḏĐđD̦d̦ƉɖƊɗƋƌᵭᶁᶑȡᴅＤｄð]',
+    e: '[eÉéÈèÊêḘḙĚěĔĕẼẽḚḛẺẻĖėËëĒēȨȩĘęᶒɆɇȄȅẾếỀềỄễỂểḜḝḖḗḔḕȆȇẸẹỆệⱸᴇＥｅɘǝƏƐε]',
+    f: '[fƑƒḞḟ]',
+    g: '[gɢ₲ǤǥĜĝĞğĢģƓɠĠġ]',
+    h: '[hĤĥĦħḨḩẖẖḤḥḢḣɦʰǶƕ]',
+    i: '[iÍíÌìĬĭÎîǏǐÏïḮḯĨĩĮįĪīỈỉȈȉȊȋỊịḬḭƗɨɨ̆ᵻᶖİiIıɪＩｉ]',
+    j: '[jȷĴĵɈɉʝɟʲ]',
+    k: '[kƘƙꝀꝁḰḱǨǩḲḳḴḵκϰ₭]',
+    l: '[lŁłĽľĻļĹĺḶḷḸḹḼḽḺḻĿŀȽƚⱠⱡⱢɫɬᶅɭȴʟＬｌ]',
+    n: '[nŃńǸǹŇňÑñṄṅŅņṆṇṊṋṈṉN̈n̈ƝɲȠƞᵰᶇɳȵɴＮｎŊŋ]',
+    o: '[oØøÖöÓóÒòÔôǑǒŐőŎŏȮȯỌọƟɵƠơỎỏŌōÕõǪǫȌȍՕօ]',
+    p: '[pṔṕṖṗⱣᵽƤƥᵱ]',
+    q: '[qꝖꝗʠɊɋꝘꝙq̃]',
+    r: '[rŔŕɌɍŘřŖŗṘṙȐȑȒȓṚṛⱤɽ]',
+    s: '[sŚśṠṡṢṣꞨꞩŜŝŠšŞşȘșS̈s̈]',
+    t: '[tŤťṪṫŢţṬṭƮʈȚțṰṱṮṯƬƭ]',
+    u: '[uŬŭɄʉỤụÜüÚúÙùÛûǓǔŰűŬŭƯưỦủŪūŨũŲųȔȕ∪]',
+    v: '[vṼṽṾṿƲʋꝞꝟⱱʋ]',
+    w: '[wẂẃẀẁŴŵẄẅẆẇẈẉ]',
+    x: '[xẌẍẊẋχ]',
+    y: '[yÝýỲỳŶŷŸÿỸỹẎẏỴỵɎɏƳƴ]',
+    z: '[zŹźẐẑŽžŻżẒẓẔẕƵƶ]',
   };
 
-  var asciifold = (function() {
-    var i, n, k, chunk;
-    var foreignletters = '';
-    var lookup = {};
+  var asciifold = (function () {
+    let i; let n; let k; let
+      chunk;
+    let foreignletters = '';
+    const lookup = {};
     for (k in DIACRITICS) {
-    	if (DIACRITICS.hasOwnProperty(k)) {
+    	if (Object.prototype.hasOwnProperty.call(DIACRITICS, k)) {
     		chunk = DIACRITICS[k].substring(2, DIACRITICS[k].length - 1);
     		foreignletters += chunk;
     		for (i = 0, n = chunk.length; i < n; i++) {
@@ -482,14 +500,11 @@
     		}
     	}
     }
-    var regexp = new RegExp('[' +  foreignletters + ']', 'g');
-    return function(str) {
-    	return str.replace(regexp, function(foreignletter) {
-    		return lookup[foreignletter];
-    	}).toLowerCase();
+    const regexp = new RegExp(`[${foreignletters}]`, 'g');
+    return function (str) {
+    	return str.replace(regexp, (foreignletter) => lookup[foreignletter]).toLowerCase();
     };
-  })();
-
+  }());
 
   // export
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
