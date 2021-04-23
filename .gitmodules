@@ -1,0 +1,3 @@
+[submodule "js-testing/js-testing/e2e-realworld-testing/react-redux-realworld-example-app"]
+	path = js-testing/js-testing/e2e-realworld-testing/react-redux-realworld-example-app
+	url = https://github.com/saaamadhi/training-itechArt.git
