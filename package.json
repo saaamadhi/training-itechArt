@@ -8,8 +8,10 @@
   },
   "dependencies": {
     "history": "^4.6.3",
+    "jest": "^26.6.3",
     "marked": "^0.3.6",
     "prop-types": "^15.5.10",
+    "puppeteer": "^9.0.0",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "react-redux": "^5.0.7",
@@ -25,7 +27,20 @@
   "scripts": {
     "start": "cross-env PORT=4100 react-scripts start",
     "build": "react-scripts build",
-    "test": "cross-env PORT=4100 react-scripts test --env=jsdom",
+    "test": "cross-env PORT=4100 jest --detectOpenHandles",
     "eject": "react-scripts eject"
-  }
+  },
+  "description": "[![RealWorld Frontend](https://img.shields.io/badge/realworld-frontend-%23783578.svg)](http://realworld.io)",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gothinkster/react-redux-realworld-example-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gothinkster/react-redux-realworld-example-app/issues"
+  },
+  "homepage": "https://github.com/gothinkster/react-redux-realworld-example-app#readme"
 }
