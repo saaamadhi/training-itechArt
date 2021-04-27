@@ -1,10 +1,12 @@
-const puppeteer = require('puppeteer');
+import {BASE_URL} from './constants.js';
+import puppeteer from 'puppeteer';
 
-const test = async (tagEl) => {
+const test = async () => {
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
-    await page.goto('https://react-redux.realworld.io/#/?_k=5uoumf');
-    await page.click('tag-list > a');
+    await page.goto(`${BASE_URL}?_k=5uoumf`);
+    await page.click('.sidebar .tag-list a.tag-default:nth-child(11)');
+    await browser.close();
 }
 
-test('test');
+test();
