@@ -1,9 +1,10 @@
-const puppeteer = require('puppeteer');
+import {BASE_URL} from './constants.js';
+import puppeteer from 'puppeteer';
 
 const test = async(userName, userEmail, userPass) => {
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
-    await page.goto('https://react-redux.realworld.io/#/register?_k=cs8sws');
+    await page.goto(`${BASE_URL}register?_k=cs8sws`);
     await page.click('input[type="text"]');
     await page.type('input[type="text"]', userName);
     await page.click('input[type="email"]');
