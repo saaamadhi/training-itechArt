@@ -1,17 +1,18 @@
-const puppeteer = require('puppeteer');
+import {BASE_URL} from './constants.js';
+import puppeteer from 'puppeteer';
 
-const test = async (articleName, articalAbout, articalText, articalTags) => {
+const test = async (articleName, articleAbout, articleText, articleTags) => {
     const browser = await puppeteer.launch( { headless: false });
     const page = await browser.newPage();
-    await page.goto('https://react-redux.realworld.io/#/editor?_k=c0xxce');
-    await page.click('input:nth-child(1)');
-    await page.type('input:nth-child(1)', articleName);
-    await page.click('input:nth-child(2)');
-    await page.type('input:nth-child(2)', articalAbout);
+    await page.goto(`${BASE_URL}editor?_k=c0xxce`);
+    await page.click('input.form-control.form-control-lg');
+    await page.type('input.form-control.form-control-lg', articleName);
+    await page.click('form fieldset fieldset.form-group:nth-child(2) input.form-control');
+    await page.type('form fieldset fieldset.form-group:nth-child(2) input.form-control', articleAbout);
     await page.click('textarea');
-    await page.type('textarea', articalText);
-    await page.click('input:nth-child(3)');
-    await page.type('input:nth-child(3)', articalTags);
+    await page.type('textarea', articleText);
+    await page.click('form fieldset fieldset.form-group:nth-child(4) input.form-control');
+    await page.type('form fieldset fieldset.form-group:nth-child(4) input.form-control', articleTags);
     await page.click('form button');
     await browser.close();
 }
