@@ -6,7 +6,7 @@
   padding: 43px 0;
   width: 100%;
   min-height: 506px;
-  height: 100%;
+  height: auto;
   background: center / cover no-repeat
     url(../images/section-features/background.png);
 }
@@ -25,7 +25,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   width: 80%;
-  height: 100%;
+  min-height: 233px;
 }
 
 .video-block {
@@ -33,7 +33,7 @@
   width: 100%;
   max-width: 658px;
   margin-bottom: 20px;
-  height: 233px;
+  height: auto;
 }
 
 .caption-container {
@@ -42,7 +42,6 @@
   align-items: flex-end;
   justify-content: space-between;
   width: 340px;
-  height: 100%;
   box-sizing: border-box;
   padding: 11px 14px;
   background: #ec9e03;
@@ -92,7 +91,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: fit-content;
 }
 
 .pause-btn {
@@ -138,7 +137,7 @@
   padding: 0 8px;
   background: #ec9e03;
   width: 330px;
-  height: 233px;
+  margin-bottom: 20px;
 }
 
 .twits-amount-container {
