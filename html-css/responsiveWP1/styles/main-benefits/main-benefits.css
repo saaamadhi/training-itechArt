@@ -8,7 +8,7 @@
   height: 100%;
   box-sizing: border-box;
   background: center / cover no-repeat
-    url(../images/main-benefits/background.png);
+    url(../../images/main-benefits/background.png);
 }
 
 .title-container {
