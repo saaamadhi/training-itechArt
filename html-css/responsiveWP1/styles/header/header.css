@@ -24,7 +24,7 @@ body {
   width: 100%;
   padding: 28px 0 0;
   box-sizing: border-box;
-  background: center / cover no-repeat url(../images/banner/background.png);
+  background: center / cover no-repeat url(../../images/banner/background.png);
   overflow: hidden;
 }
 
