@@ -8,7 +8,7 @@
   min-height: 506px;
   height: auto;
   background: center / cover no-repeat
-    url(../images/section-features/background.png);
+    url(../../images/section-features/background.png);
 }
 
 .features__title {
