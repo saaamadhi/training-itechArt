@@ -1,0 +1,52 @@
+@media (max-width: 768px) {
+  .features {
+    padding: 0;
+    background: #ffffff;
+    min-height: fit-content;
+  }
+
+  .features__title {
+    display: none;
+  }
+
+  .content-container {
+    width: 100%;
+  }
+
+  .video-block {
+    padding: 10px;
+    max-width: 100%;
+    margin: 0;
+    width: 100%;
+  }
+
+  .video-block__video {
+    width: 100%;
+  }
+
+  .video-container {
+    margin-left: 5px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .caption-container {
+    margin-right: 5px;
+    width: 100%;
+  }
+
+  .item-twitter {
+    width: 100%;
+    height: fit-content;
+    padding: 51px 0;
+    background: #f5c507;
+  }
+
+  .twits-amount-container {
+    display: none;
+  }
+
+  .add-twit-btn-container {
+    display: none;
+  }
+}
