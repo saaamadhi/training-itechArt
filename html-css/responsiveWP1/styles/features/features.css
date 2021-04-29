@@ -1,0 +1,200 @@
+.features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 43px 0;
+  width: 100%;
+  min-height: 506px;
+  height: auto;
+  background: center / cover no-repeat
+    url(../images/section-features/background.png);
+}
+
+.features__title {
+  font-size: 37px;
+  width: 80%;
+  font-family: "Asap", sans-serif;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 40px;
+}
+
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 80%;
+  min-height: 233px;
+}
+
+.video-block {
+  display: flex;
+  width: 100%;
+  max-width: 658px;
+  margin-bottom: 20px;
+  height: auto;
+}
+
+.caption-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 340px;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  background: #ec9e03;
+}
+
+.desc-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.desc-container__caption {
+  padding: 12px 16px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 29px;
+  color: #ffffff;
+  font-weight: lighter;
+  line-height: 1.2;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.add-btn {
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.add-btn__icon {
+  width: 11px;
+  height: 11px;
+  fill-rule: evenodd;
+  fill: #ffffff;
+  opacity: 0.702;
+}
+
+.video-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+}
+
+.video-play-btn-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.pause-btn {
+  position: absolute;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.pause-btn__pause-icon-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pause-icon-container__icon-circle {
+  width: 61px;
+  height: 61px;
+  fill-rule: evenodd;
+  fill: #f5c506;
+  opacity: 0.722;
+}
+
+.pause-icon-container__icon-play {
+  position: absolute;
+  top: 15px;
+  left: 24px;
+  width: 18px;
+  height: 32px;
+  fill-rule: evenodd;
+  fill: #f5f4f2;
+}
+
+.item-twitter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 8px;
+  background: #ec9e03;
+  width: 330px;
+  margin-bottom: 20px;
+}
+
+.twits-amount-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-top: 11px;
+}
+
+.twits-amount-container__twits-amount {
+  padding-right: 12px;
+  font-size: 25px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #ffffff;
+}
+
+.twitter-icon-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.twitter-icon-container__twitter-icon {
+  width: 163px;
+  height: 133px;
+  fill-rule: evenodd;
+  fill: #bc7d00;
+  opacity: 0.902;
+}
+
+.add-twit-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-bottom: 11px;
+}
+
+.add-twit-btn {
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.add-twit-btn__icon {
+  width: 11px;
+  height: 11px;
+  fill-rule: evenodd;
+  fill: #ffffff;
+  opacity: 0.702;
+}
