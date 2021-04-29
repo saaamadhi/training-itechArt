@@ -44,7 +44,7 @@
     width: 100%;
     height: 100%;
     box-shadow: none;
-    background: url(../images/header/nav-back.png);
+    background: url(../../images/header/nav-back.png);
   }
 
   .nav__link {
