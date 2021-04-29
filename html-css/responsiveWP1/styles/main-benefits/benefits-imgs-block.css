@@ -1,0 +1,46 @@
+.benefits-imgs-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+}
+
+.desktop-icon-container {
+  margin-left: 24px;
+}
+
+.sticker {
+  position: absolute;
+  top: -43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  width: 120px;
+  background: #f5c506;
+  border-radius: 50%;
+}
+
+.sticker__caption {
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.tablet-n-phone-icons-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.tablet-n-phone-icons-container__tablet {
+  margin-left: 24px;
+}
+
+.tablet-n-phone-icons-container__phone {
+  margin-left: 24px;
+}

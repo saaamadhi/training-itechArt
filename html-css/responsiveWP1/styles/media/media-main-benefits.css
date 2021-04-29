@@ -1,0 +1,22 @@
+@media (max-width: 768px) {
+  .main-benefits {
+    min-height: fit-content;
+  }
+
+  .title-container {
+    width: 100%;
+  }
+
+  .content-wrap {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .benefits-list {
+    display: none;
+  }
+
+  .benefits-imgs-wrap {
+    margin: 0;
+  }
+}
