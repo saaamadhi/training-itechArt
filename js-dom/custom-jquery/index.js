@@ -1,6 +1,21 @@
-function $(selector){
-
-    const elems = document.querySelectorAll(selector);
+function $(...selector){
+    let elems;
+    const result = [];
+    for(let key in selector){
+        if(typeof(selector[key]) === 'string'){
+            const arr = selector[key].split(' ');
+            arr.forEach((el) => {
+                const value = document.querySelectorAll(el);
+                result.push(...value);
+            });
+        }
+        if(typeof(selector[key]) === 'object'){
+            const arr = [...selector[key]]
+            result.push(...arr);
+        }
+    }
+    elems = [...result];
+    alert(elems);
 
     this.text = function(value){
         if(value !== undefined){
