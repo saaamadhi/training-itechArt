@@ -10,12 +10,12 @@ function $(...selector){
             });
         }
         if(typeof(selector[key]) === 'object'){
-            const arr = [...selector[key]]
+            const arr = [];
+            arr.push(selector[key])
             result.push(...arr);
         }
     }
     elems = [...result];
-    alert(elems);
 
     this.text = function(value){
         if(value !== undefined){
