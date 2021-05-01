@@ -1,5 +1,5 @@
+var elems;
 function $(...selector){
-    let elems;
     const result = [];
     for(let key in selector){
         if(typeof(selector[key]) === 'string'){
@@ -11,8 +11,13 @@ function $(...selector){
         }
         if(typeof(selector[key]) === 'object'){
             const arr = [];
-            arr.push(selector[key])
-            result.push(...arr);
+            if(selector[key].elems){
+                arr.push(...selector[key].elems)
+                result.push(...arr);
+            }else {
+                arr.push(...selector[key])
+                result.push(...arr);
+            }
         }
     }
     elems = [...result];
@@ -178,6 +183,6 @@ function $(...selector){
         
         return this;
     }
-
+    
     return this;
 }
