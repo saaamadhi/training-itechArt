@@ -1,29 +1,28 @@
 function $(...selector){
-    const customObj = {
-        elems: (function(){
-            let elems;
-            const result = [];
-            for(let key in selector){
-                if(typeof(selector[key]) === 'string'){
-                    const arr = selector[key].split(' ');
-                    arr.forEach((el) => {
-                        const value = document.querySelectorAll(el);
-                        result.push(...value);
-                    });
-                }
-                if(typeof(selector[key]) === 'object'){
-                    const arr = [];
-                    if(selector[key].elems){
-                        arr.push(...selector[key].elems)
-                        result.push(...arr);
-                    }else {
-                        arr.push(...selector[key])
-                        result.push(...arr);
-                    }
-                }
+    let elems;
+    const result = [];
+    
+    for(let key in selector){
+        if(typeof(selector[key]) === 'string'){
+            const value = document.querySelectorAll(selector[key]);
+            result.push(...value);
+        }
+        if(typeof(selector[key]) === 'object'){
+            const arr = [];
+            if(selector[key].elems){
+                arr.push(...selector[key].elems);
+                result.push(...arr);
+            }else {
+                arr.push(selector[key]);
+                result.push(...arr);
             }
-            return elems = [...result];
-        })(),
+        }
+    }
+
+    elems = [...result];
+
+    const customObj = {
+        elems: elems,
 
         text: function(value){
             if(value !== undefined){
