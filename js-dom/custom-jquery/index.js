@@ -1,188 +1,172 @@
-var elems;
 function $(...selector){
-    const result = [];
-    for(let key in selector){
-        if(typeof(selector[key]) === 'string'){
-            const arr = selector[key].split(' ');
-            arr.forEach((el) => {
-                const value = document.querySelectorAll(el);
-                result.push(...value);
-            });
-        }
-        if(typeof(selector[key]) === 'object'){
-            const arr = [];
-            if(selector[key].elems){
-                arr.push(...selector[key].elems)
-                result.push(...arr);
+    const customObj = {
+        elems: (function(){
+            let elems;
+            const result = [];
+            for(let key in selector){
+                if(typeof(selector[key]) === 'string'){
+                    const arr = selector[key].split(' ');
+                    arr.forEach((el) => {
+                        const value = document.querySelectorAll(el);
+                        result.push(...value);
+                    });
+                }
+                if(typeof(selector[key]) === 'object'){
+                    const arr = [];
+                    if(selector[key].elems){
+                        arr.push(...selector[key].elems)
+                        result.push(...arr);
+                    }else {
+                        arr.push(...selector[key])
+                        result.push(...arr);
+                    }
+                }
+            }
+            return elems = [...result];
+        })(),
+
+        text: function(value){
+            if(value !== undefined){
+                customObj.elems.forEach(element => {
+                    element.innerText = value;
+                });
+            }else{
+                const arr = [];
+                customObj.elems.forEach(element => {
+                    arr.push(element.innerText);
+                });
+    
+                return arr.join(' ');
+            }
+        },
+    
+        css: function(property, value){
+            if(value !== undefined){
+                customObj.elems.forEach(element => {
+                    element.style[property] = value;
+                });
             }else {
-                arr.push(...selector[key])
-                result.push(...arr);
+                let neededProp;
+                customObj.elems.forEach(element => {
+                    const styles = getComputedStyle(element);
+                    neededProp = styles.getPropertyValue(property);
+                });
+    
+                return neededProp;
             }
-        }
-    }
-    elems = [...result];
-
-    this.text = function(value){
-        if(value !== undefined){
-            elems.forEach(element => {
-                element.innerText = value;
-            });
-
-            return this;
-        }else{
-            const arr = [];
-            elems.forEach(element => {
-                arr.push(element.innerText);
-            });
-
-            return arr.join(' ');
-        }
-    }
-
-    this.css = function(property, value){
-        if(value !== undefined){
-            elems.forEach(element => {
-                element.style[property] = value;
-            });
-
-            return this;
-        }else {
-            let neededProp;
-            elems.forEach(element => {
-                const styles = getComputedStyle(element);
-                neededProp = styles.getPropertyValue(property);
-            });
-
-            return neededProp;
-        }
-    }
-
-    this.attr = function(name, value){
-        if(value !== undefined){ 
-            elems.forEach(element => {
-                element.setAttribute(name, value);
-            });
-
-            return this;
-        }
-        else { 
-            let neededVal;
-            elems.forEach(element => {
-                neededVal = element.getAttribute(name);
-            });
-            
-            return neededVal;
-        }
-    }
-
-    this.empty = function(){
-        elems.forEach(element => {
-            element.innerHTML = '';
-        });
-
-        return this;
-    }
-
-    this.addClass = function(value){
-        if(typeof(value) === 'string' || typeof(value) === 'array'){
-            elems.forEach(element => {
-                const arr = value.split(' ');
-                element.classList.add(...arr);
-            });
-        }
-        else {
-            if(value !== undefined){
-                elems.forEach(element => {
-                    const result = value();
-                    element.classList.add(result);
-                })
-            }
-        }
-
-        return this;
-    }
-
-    this.removeClass = function(value){
-        if(typeof(value) === 'string'){
-            elems.forEach(element => {
-                const arr = value.split(' ');
-                element.classList.remove(...arr);
-            });
-        }
-        else {
-            if(value !== undefined){
-                elems.forEach(element => {
-                    const result = value();
-                    element.classList.remove(result);
+        },
+    
+        attr: function(name, value){
+            if(value !== undefined){ 
+                customObj.elems.forEach(element => {
+                    element.setAttribute(name, value);
                 });
             }
-        }
-
-        return this;
-    }
-
-    this.append = function(value){
-        if(typeof(value) === 'string'){
-            elems.forEach(element => {
-                element.innerHTML += value;
-            });
-        }else {
-            elems.forEach(element => {
-                element.append(value);
-            });
-        }
-
-        return this;
-    }
+            else { 
+                let neededVal;
+                customObj.elems.forEach(element => {
+                    neededVal = element.getAttribute(name);
+                });
+                
+                return neededVal;
+            }
+        },
     
-    this.remove = function(value){
-        if(value !== undefined){
-            elems.forEach(element => {
-                const elToRemove = document.querySelector(value);
-                element.removeChild(elToRemove);
+        empty: function(){
+            customObj.elems.forEach(element => {
+                element.innerHTML = '';
             });
-        }else{
-            elems.forEach(element => {
-                element.remove();
-            });
-        } 
-
-        return this;
-    }
-
-    this.children = function(value){
-        if(value !== undefined){
-            let matched;
-            elems.forEach(element => {
-                matched = Array.from(element.querySelectorAll(value));
-            });
-
-            return matched;
-        }else {
-            let childs;
-            elems.forEach(element => {
-                childs = Array.from(element.children);
-            });
-
-            return childs;
-        }
-
-        //return this;
-    }
-
-    this.click = function(value){
-        if(value !== undefined){
-            elems.forEach(element => {
-                element.addEventListener('click', value());
-            });
-        }else {
-            elems.forEach(element => {
-                element.addEventListener('click', ()=>{});
-            });
-        }
+        },
+    
+        addClass: function(value){
+            if(typeof(value) === 'string' || typeof(value) === 'array'){
+                customObj.elems.forEach(element => {
+                    const arr = value.split(' ');
+                    element.classList.add(...arr);
+                });
+            }
+            else {
+                if(value !== undefined){
+                    customObj.elems.forEach(element => {
+                        const result = value();
+                        element.classList.add(result);
+                    })
+                }
+            }
+        },
+    
+        removeClass: function(value){
+            if(typeof(value) === 'string'){
+                customObj.elems.forEach(element => {
+                    const arr = value.split(' ');
+                    element.classList.remove(...arr);
+                });
+            }
+            else {
+                if(value !== undefined){
+                    customObj.elems.forEach(element => {
+                        const result = value();
+                        element.classList.remove(result);
+                    });
+                }
+            }
+        },
+    
+        append: function(value){
+            if(typeof(value) === 'string'){
+                customObj.elems.forEach(element => {
+                    element.innerHTML += value;
+                });
+            }else {
+                customObj.elems.forEach(element => {
+                    element.append(value);
+                });
+            }
+        },
         
-        return this;
+        remove: function(value){
+            if(value !== undefined){
+                customObj.elems.forEach(element => {
+                    const elToRemove = document.querySelector(value);
+                    element.removeChild(elToRemove);
+                });
+            }else{
+                customObj.elems.forEach(element => {
+                    element.remove();
+                });
+            } 
+        },
+    
+        children: function(value){
+            if(value !== undefined){
+                let matched;
+                customObj.elems.forEach(element => {
+                    matched = Array.from(element.querySelectorAll(value));
+                });
+    
+                return matched;
+            }else {
+                let childs;
+                customObj.elems.forEach(element => {
+                    childs = Array.from(element.children);
+                });
+    
+                return childs;
+            }
+        },
+    
+        click: function(value){
+            if(value !== undefined){
+                customObj.elems.forEach(element => {
+                    element.addEventListener('click', value());
+                });
+            }else {
+                customObj.elems.forEach(element => {
+                    element.addEventListener('click', ()=>{});
+                });
+            }
+        },
     }
     
-    return this;
+    return customObj;
 }
