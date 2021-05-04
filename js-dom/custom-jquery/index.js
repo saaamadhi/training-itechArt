@@ -100,7 +100,8 @@ function $(...selector){
             }
             if(typeof(value) === 'string'){
                 customObj.elems.forEach(element => {
-                    element.classList.add(value);
+                    const arr = value.split(' ');
+                    element.classList.add(...arr);
                 });
             }
             if(typeof(value) === 'object'){
@@ -111,20 +112,31 @@ function $(...selector){
         },
     
         removeClass: function(value){
+            if(typeof(value) === 'object'){
+                customObj.elems.forEach(element => {
+                    element.classList.remove(...value);
+                });
+            }
             if(typeof(value) === 'string'){
                 customObj.elems.forEach(element => {
                     const arr = value.split(' ');
                     element.classList.remove(...arr);
                 });
             }
-            else {
-                if(value !== undefined){
-                    customObj.elems.forEach(element => {
-                        const result = value();
+            
+            if(typeof(value) === 'function'){
+                customObj.elems.map((element, index) => {
+                    const result = value(index+1);
+                    if(typeof(result) === 'object'){
                         element.classList.remove(result);
-                    });
-                }
+                    }
+                    if(typeof(result) === 'string'){
+                        const arr = result.split(' ');
+                        element.classList.remove(...arr);
+                    }
+                });
             }
+            
         },
     
         append: function(value){
