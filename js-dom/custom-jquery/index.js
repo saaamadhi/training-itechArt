@@ -139,14 +139,45 @@ function $(...selector){
             
         },
     
-        append: function(value){
-            if(typeof(value) === 'string'){
-                customObj.elems.forEach(element => {
-                    element.innerHTML += value;
+        append: function(content, value){
+            if(typeof(content) === 'function'){
+                customObj.elems.map((element, index) => {
+                    const result = content(index);
+                    if(typeof(result) === 'string'){
+                        element.innerHTML += result;
+                    }
+                    if(typeof(result) === 'object'){
+                        element.append(result);
+                    }
                 });
-            }else {
+            }
+            if(typeof(content) === 'object' && value !== undefined){
+                const arr = [...content.elems,...value];
                 customObj.elems.forEach(element => {
-                    element.append(value);
+                    arr.forEach((item) => {
+                        element.appendChild(item);
+                    })
+                });
+            }
+            if(typeof(content) === 'object' && value === undefined){
+                if(content.elems){
+                    customObj.elems.forEach(element => {
+                        const fragment = document.createDocumentFragment();
+                        content.elems.forEach((item) => {
+                            fragment.appendChild(item);
+                        })
+                        element.appendChild(fragment);
+                    });
+                }else{
+                    customObj.elems.forEach(element => {
+                        element.append(content);
+                    });
+                }
+                
+            }
+            if(typeof(content) === 'string'){
+                customObj.elems.forEach(element => {
+                    element.innerHTML += content;
                 });
             }
         },
