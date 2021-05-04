@@ -78,19 +78,30 @@ function $(...selector){
         },
     
         addClass: function(value){
-            if(typeof(value) === 'string' || typeof(value) === 'array'){
-                customObj.elems.forEach(element => {
-                    const arr = value.split(' ');
-                    element.classList.add(...arr);
-                });
-            }
-            else {
-                if(value !== undefined){
+            if(typeof(value) === 'function'){
+                const result = value();
+                alert(typeof(result));
+                if(typeof(result) === 'object'){
                     customObj.elems.forEach(element => {
-                        const result = value();
-                        element.classList.add(result);
+                        element.classList.add(...result);
                     })
                 }
+                if(typeof(result) === 'string'){
+                    const arr = result.split(' ');
+                    customObj.elems.forEach(element => {
+                        element.classList.add(...arr);
+                    })
+                }
+            }
+            if(typeof(value) === 'string'){
+                customObj.elems.forEach(element => {
+                    element.classList.add(value);
+                });
+            }
+            if(typeof(value) === 'object'){
+                customObj.elems.forEach(element => {
+                    element.classList.add(...value);
+                });
             }
         },
     
