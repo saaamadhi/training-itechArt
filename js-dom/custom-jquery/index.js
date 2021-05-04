@@ -25,11 +25,18 @@ function $(...selector){
         elems: elems,
 
         text: function(value){
-            if(value !== undefined){
+            if(typeof(value) === 'function'){
+                customObj.elems.forEach(element => {
+                    const result = value();
+                    element.innerText = result;
+                });
+            }
+            if(typeof(value) === 'string'){
                 customObj.elems.forEach(element => {
                     element.innerText = value;
                 });
-            }else{
+            }
+            if(value === undefined){
                 const arr = [];
                 customObj.elems.forEach(element => {
                     arr.push(element.innerText);
