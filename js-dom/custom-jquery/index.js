@@ -183,15 +183,15 @@ function $(...selector){
         },
         
         remove: function(value){
-            if(value !== undefined){
-                customObj.elems.forEach(element => {
-                    const elToRemove = document.querySelector(value);
-                    element.removeChild(elToRemove);
-                });
-            }else{
+            if(value === undefined){
                 customObj.elems.forEach(element => {
                     element.remove();
                 });
+            }else{
+                const elsToRemove = document.querySelectorAll(value);
+                elsToRemove.forEach((item) => {
+                    item.parentElement.removeChild(item);
+                })
             } 
         },
     
