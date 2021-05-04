@@ -47,11 +47,12 @@ function $(...selector){
         },
     
         css: function(property, value){
-            if(value !== undefined){
+            if(typeof(property) === 'string' && typeof(value) === 'string'){
                 customObj.elems.forEach(element => {
                     element.style[property] = value;
                 });
-            }else {
+            }
+            if(value === undefined){
                 let neededProp;
                 customObj.elems.forEach(element => {
                     const styles = getComputedStyle(element);
