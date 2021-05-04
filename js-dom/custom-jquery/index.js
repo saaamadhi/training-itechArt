@@ -87,19 +87,16 @@ function $(...selector){
     
         addClass: function(value){
             if(typeof(value) === 'function'){
-                const result = value();
-                alert(typeof(result));
-                if(typeof(result) === 'object'){
-                    customObj.elems.forEach(element => {
-                        element.classList.add(...result);
-                    })
-                }
-                if(typeof(result) === 'string'){
-                    const arr = result.split(' ');
-                    customObj.elems.forEach(element => {
+                customObj.elems.map((element, index) => {
+                    const result = value(index+1);
+                    if(typeof(result) === 'object'){
+                        element.classList.add(result);
+                    }
+                    if(typeof(result) === 'string'){
+                        const arr = result.split(' ');
                         element.classList.add(...arr);
-                    })
-                }
+                    }
+                })
             }
             if(typeof(value) === 'string'){
                 customObj.elems.forEach(element => {
