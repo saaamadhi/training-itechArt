@@ -64,12 +64,12 @@ function $(...selector){
         },
     
         attr: function(name, value){
-            if(value !== undefined){ 
+            if(typeof(name) === 'string' && typeof(value) === 'string'){ 
                 customObj.elems.forEach(element => {
                     element.setAttribute(name, value);
                 });
             }
-            else { 
+            if(value === undefined){ 
                 let neededVal;
                 customObj.elems.forEach(element => {
                     neededVal = element.getAttribute(name);
