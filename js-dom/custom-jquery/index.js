@@ -26,8 +26,8 @@ function $(...selector){
 
         text: function(value){
             if(typeof(value) === 'function'){
-                customObj.elems.forEach(element => {
-                    const result = value();
+                customObj.elems.map((element, index) => {
+                    const result = value(index);
                     element.innerText = result;
                 });
             }
