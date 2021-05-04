@@ -213,14 +213,14 @@ function $(...selector){
             }
         },
     
-        click: function(value){
-            if(value !== undefined){
+        clickFoo: function(handler){
+            if(handler === undefined){
                 customObj.elems.forEach(element => {
-                    element.addEventListener('click', value());
+                    element.addEventListener('click', event => {} );
                 });
-            }else {
+            }else{
                 customObj.elems.forEach(element => {
-                    element.addEventListener('click', ()=>{});
+                    element.addEventListener('click', handler);
                 });
             }
         },
