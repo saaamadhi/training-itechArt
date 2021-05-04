@@ -197,19 +197,19 @@ function $(...selector){
     
         children: function(value){
             if(value !== undefined){
-                let matched;
+                let matchedEls = document.querySelectorAll(value);
                 customObj.elems.forEach(element => {
-                    matched = Array.from(element.querySelectorAll(value));
+                    matchedEls.forEach(item => {
+                        if(item.parentElement === element){
+                            return console.log(item);
+                        }
+                    });
                 });
-    
-                return matched;
             }else {
-                let childs;
                 customObj.elems.forEach(element => {
-                    childs = Array.from(element.children);
+                    let childs = [...element.children];
+                    return console.log(childs);
                 });
-    
-                return childs;
             }
         },
     
