@@ -213,14 +213,14 @@ function $(...selector){
             }
         },
     
-        clickFoo: function(handler){
-            if(handler === undefined){
+        click: function(handler){
+            if(handler !== undefined){
                 customObj.elems.forEach(element => {
-                    element.addEventListener('click', event => {} );
+                    element.addEventListener('click', handler);
                 });
             }else{
                 customObj.elems.forEach(element => {
-                    element.addEventListener('click', handler);
+                    element.click();
                 });
             }
         },
