@@ -53,13 +53,12 @@ function $(...selector){
                 });
             }
             if(value === undefined){
-                let neededProp;
                 customObj.elems.forEach(element => {
                     const styles = getComputedStyle(element);
-                    neededProp = styles.getPropertyValue(property);
+                    const neededProp = styles.getPropertyValue(property);
+
+                    return neededProp;
                 });
-    
-                return neededProp;
             }
         },
     
@@ -70,12 +69,11 @@ function $(...selector){
                 });
             }
             if(value === undefined){ 
-                let neededVal;
                 customObj.elems.forEach(element => {
-                    neededVal = element.getAttribute(name);
+                    const neededVal = element.getAttribute(name);
+
+                    return neededVal;
                 });
-                
-                return neededVal;
             }
         },
     
