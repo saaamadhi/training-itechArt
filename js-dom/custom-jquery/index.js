@@ -88,7 +88,7 @@ function $(...selector){
         addClass: function(value){
             if(typeof(value) === 'function'){
                 customObj.elems.map((element, index) => {
-                    const result = value(index+1);
+                    const result = value(index);
                     if(typeof(result) === 'object'){
                         element.classList.add(result);
                     }
@@ -126,7 +126,7 @@ function $(...selector){
             
             if(typeof(value) === 'function'){
                 customObj.elems.map((element, index) => {
-                    const result = value(index+1);
+                    const result = value(index);
                     if(typeof(result) === 'object'){
                         element.classList.remove(result);
                     }
