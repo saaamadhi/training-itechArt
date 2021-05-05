@@ -62,7 +62,7 @@ function $(...selector){
             }
         },
     
-        attr: function(name, value){
+        attr: function(name, value){//куенкт щтдн 1
             if(typeof(name) === 'string' && typeof(value) === 'string'){ 
                 customObj.elems.forEach(element => {
                     element.setAttribute(name, value);
@@ -187,7 +187,7 @@ function $(...selector){
                 });
             }else{
                 const res = document.querySelector(value);
-                customObj.elems.filter((el) => {
+                customObj.elems.filter((el) => {//не дочерний, а с селектором
                     if(el === res.parentElement){
                         el.removeChild(res);
                     }
@@ -197,19 +197,21 @@ function $(...selector){
     
         children: function(value){
             if(value !== undefined){
-                let matchedEls = document.querySelectorAll(value);
+                let result = [];
                 customObj.elems.forEach(element => {
-                    matchedEls.forEach(item => {
-                        if(item.parentElement === element){
-                            return console.log(item);
-                        }
-                    });
+                    if(element.matches(value)){
+                        result.push(element);
+                    }
                 });
+
+                return result;
             }else {
+                let result = [];
                 customObj.elems.forEach(element => {
-                    let childs = [...element.children];
-                    return console.log(childs);
+                    result = [...element.children];
                 });
+                
+                return result;
             }
         },
     
