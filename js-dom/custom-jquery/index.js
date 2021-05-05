@@ -186,10 +186,9 @@ function $(...selector){
                     element.remove();
                 });
             }else{
-                const res = document.querySelector(value);
-                customObj.elems.filter((el) => {//не дочерний, а с селектором
-                    if(el === res.parentElement){
-                        el.removeChild(res);
+                customObj.elems.filter((el) => {
+                    if(el.matches(value)){
+                        el.remove();
                     }
                 })
             } 
@@ -210,7 +209,7 @@ function $(...selector){
                 customObj.elems.forEach(element => {
                     result = [...element.children];
                 });
-                
+
                 return result;
             }
         },
