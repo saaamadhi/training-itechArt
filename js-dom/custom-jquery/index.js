@@ -186,14 +186,12 @@ function $(...selector){
                     element.remove();
                 });
             }else{
-                const elsToRemove = document.querySelectorAll(value);
-                elsToRemove.forEach((item) => {
-                        customObj.elems.filter((el) => {
-                            if(el.parentElement === item.parentElement){
-                                item.parentElement.removeChild(item);
-                            }
-                        });
-                });
+                const res = document.querySelector(value);
+                customObj.elems.filter((el) => {
+                    if(el === res.parentElement){
+                        el.removeChild(res);
+                    }
+                })
             } 
         },
     
