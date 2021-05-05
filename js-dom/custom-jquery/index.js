@@ -188,8 +188,12 @@ function $(...selector){
             }else{
                 const elsToRemove = document.querySelectorAll(value);
                 elsToRemove.forEach((item) => {
-                    item.parentElement.removeChild(item);
-                })
+                        customObj.elems.filter((el) => {
+                            if(el.parentElement === item.parentElement){
+                                item.parentElement.removeChild(item);
+                            }
+                        });
+                });
             } 
         },
     
