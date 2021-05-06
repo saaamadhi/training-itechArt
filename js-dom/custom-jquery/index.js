@@ -164,7 +164,7 @@ function $(...selector){
                     });
                 }
                 if(typeof(content) === 'object'){
-                    if(content.elems ){
+                    if(content.elems){
                         if(customObj.elems.length === 1 && content.elems.length === 1){
                             customObj.elems[0].append(content.elems[0]);
                         }
@@ -183,9 +183,17 @@ function $(...selector){
                         }
                     }else{
                         customObj.elems.forEach(element => {
-                            const dublicate = content.cloneNode();
-                            dublicate.innerHTML = content.innerHTML;
-                            element.append(dublicate);
+                            if(content instanceof NodeList){
+                                content.forEach((item) => {
+                                    const dublicate = item.cloneNode();
+                                    dublicate.innerHTML = item.innerHTML;
+                                    element.append(dublicate);
+                                })
+                            }else {
+                                const dublicate = content.cloneNode();
+                                dublicate.innerHTML = content.innerHTML;
+                                element.append(dublicate);
+                            }
                         })
                     }
                 }
