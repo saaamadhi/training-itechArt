@@ -147,31 +147,31 @@ function $(...selector){
                 if(typeof(content) === 'function'){
                     customObj.elems.map((element, index) => {
                         const result = content(index);
-                        if(typeof(result) === 'string'){
-                            element.innerHTML += result;
-                        }
-                        if(typeof(result) === 'object'){
-                            element.append(result);
-                        }
+                        this.append(result);
                     });
                 }
                 if(typeof(content) === 'object'){
-                    if(customObj.elems.length === 1 && content.elems.length === 1){
-                        customObj.elems[0].append(content.elems[0]);
-                    }
-                    if(customObj.elems.length === 1 && content.elems.length > 1){
-                        customObj.elems[0].append(...content.elems);
-                    }
-                    else {
+                    if(content.elems ){
+                        if(customObj.elems.length === 1 && content.elems.length === 1){
+                            customObj.elems[0].append(content.elems[0]);
+                        }
+                        if(customObj.elems.length === 1 && content.elems.length > 1){
+                            customObj.elems[0].append(...content.elems);
+                        }else {
+                            customObj.elems.forEach(element => {
+                                const copy = [];
+                                content.elems.forEach((el) => {
+                                    const dublicate = el.cloneNode();
+                                    dublicate.innerHTML = el.innerHTML;
+                                    copy.push(dublicate);
+                                })
+                                element.append(...copy);
+                            });
+                        }
+                    }else{
                         customObj.elems.forEach(element => {
-                            const copy = [];
-                            content.elems.forEach((el) => {
-                                const dublicate = el.cloneNode();
-                                dublicate.innerHTML = el.innerHTML;
-                                copy.push(dublicate);
-                            })
-                            element.append(...copy);
-                        });
+                            element.append(content)
+                        })
                     }
                 }
             });
