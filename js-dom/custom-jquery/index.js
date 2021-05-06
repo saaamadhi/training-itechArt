@@ -231,7 +231,7 @@ function $(...selector){
             }else {
                 let result = [];
                 customObj.elems.forEach(element => {
-                    result = [...element.children];
+                    result.push([...element.children]);
                 });
 
                 return result;
