@@ -62,7 +62,7 @@ function $(...selector){
             }
         },
     
-        attr: function(name, value){//куенкт щтдн 1
+        attr: function(name, value){
             if(typeof(name) === 'string' && typeof(value) === 'string'){ 
                 customObj.elems.forEach(element => {
                     element.setAttribute(name, value);
@@ -156,20 +156,22 @@ function $(...selector){
                     });
                 }
                 if(typeof(content) === 'object'){
-                    const copy = content.elems.slice();
-                    console.log(copy)
-                    if(customObj.elems.length === 1){
-                        copy.forEach(item => {
-                            customObj.elems[0].appendChild(item);
-                        })
-                    }else {
-                        alert('here')
-                        customObj.elems.forEach((el) => {
-                            copy.forEach(item => {
-                                el.appendChild(item);
+                    if(customObj.elems.length === 1 && content.elems.length === 1){
+                        customObj.elems[0].append(content.elems[0]);
+                    }
+                    if(customObj.elems.length === 1 && content.elems.length > 1){
+                        customObj.elems[0].append(...content.elems);
+                    }
+                    else {
+                        customObj.elems.forEach(element => {
+                            const copy = [];
+                            content.elems.forEach((el) => {
+                                const dublicate = el.cloneNode();
+                                dublicate.innerHTML = el.innerHTML;
+                                copy.push(dublicate);
                             })
-                        })
-                        
+                            element.append(...copy);
+                        });
                     }
                 }
             });
