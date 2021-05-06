@@ -137,47 +137,42 @@ function $(...selector){
             
         },
     
-        append: function(content, value){
-            if(typeof(content) === 'function'){
-                customObj.elems.map((element, index) => {
-                    const result = content(index);
-                    if(typeof(result) === 'string'){
-                        element.innerHTML += result;
-                    }
-                    if(typeof(result) === 'object'){
-                        element.append(result);
-                    }
-                });
-            }
-            if(typeof(content) === 'object' && value !== undefined){
-                const arr = [...content.elems,...value];
-                customObj.elems.forEach(element => {
-                    arr.forEach((item) => {
-                        element.appendChild(item);
-                    })
-                });
-            }
-            if(typeof(content) === 'object' && value === undefined){
-                if(content.elems){
+        append: function(...values){
+            values.forEach((content) => {
+                if(typeof(content) === 'string'){
                     customObj.elems.forEach(element => {
-                        const fragment = document.createDocumentFragment();
-                        content.elems.forEach((item) => {
-                            fragment.appendChild(item);
-                        })
-                        element.appendChild(fragment);
-                    });
-                }else{
-                    customObj.elems.forEach(element => {
-                        element.append(content);
+                        element.innerHTML += content;
                     });
                 }
-                
-            }
-            if(typeof(content) === 'string'){
-                customObj.elems.forEach(element => {
-                    element.innerHTML += content;
-                });
-            }
+                if(typeof(content) === 'function'){
+                    customObj.elems.map((element, index) => {
+                        const result = content(index);
+                        if(typeof(result) === 'string'){
+                            element.innerHTML += result;
+                        }
+                        if(typeof(result) === 'object'){
+                            element.append(result);
+                        }
+                    });
+                }
+                if(typeof(content) === 'object'){
+                    const copy = content.elems.slice();
+                    console.log(copy)
+                    if(customObj.elems.length === 1){
+                        copy.forEach(item => {
+                            customObj.elems[0].appendChild(item);
+                        })
+                    }else {
+                        alert('here')
+                        customObj.elems.forEach((el) => {
+                            copy.forEach(item => {
+                                el.appendChild(item);
+                            })
+                        })
+                        
+                    }
+                }
+            });
         },
         
         remove: function(value){
