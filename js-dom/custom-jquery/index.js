@@ -222,8 +222,13 @@ function $(...selector){
             if(value !== undefined){
                 let result = [];
                 customObj.elems.forEach(element => {
-                    if(element.matches(value)){
-                        result.push(element);
+                    const values = element.querySelectorAll(value);
+                    if(values.length !== 0){
+                        result.push([...element.children]);
+                    }else {
+                        if(element.matches(value)){
+                            result.push([...element.children]);
+                        }
                     }
                 });
 
