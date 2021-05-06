@@ -30,11 +30,15 @@ function $(...selector){
                     const result = value(index);
                     element.innerText = result;
                 });
+                
+                return this;
             }
             if(typeof(value) === 'string'){
                 customObj.elems.forEach(element => {
                     element.innerText = value;
                 });
+                
+                return this;
             }
             if(value === undefined){
                 const arr = [];
@@ -51,6 +55,8 @@ function $(...selector){
                 customObj.elems.forEach(element => {
                     element.style[property] = value;
                 });
+
+                return this;
             }
             if(value === undefined){
                 customObj.elems.forEach(element => {
@@ -67,6 +73,8 @@ function $(...selector){
                 customObj.elems.forEach(element => {
                     element.setAttribute(name, value);
                 });
+                
+                return this;
             }
             if(value === undefined){ 
                 customObj.elems.forEach(element => {
@@ -81,6 +89,8 @@ function $(...selector){
             customObj.elems.forEach(element => {
                 element.innerHTML = '';
             });
+
+            return this;
         },
     
         addClass: function(value){
@@ -107,6 +117,8 @@ function $(...selector){
                     element.classList.add(...value);
                 });
             }
+
+            return this;
         },
     
         removeClass: function(value){
@@ -135,6 +147,7 @@ function $(...selector){
                 });
             }
             
+            return this;
         },
     
         append: function(...values){
@@ -170,11 +183,15 @@ function $(...selector){
                         }
                     }else{
                         customObj.elems.forEach(element => {
-                            element.append(content)
+                            const dublicate = content.cloneNode();
+                            dublicate.innerHTML = content.innerHTML;
+                            element.append(dublicate);
                         })
                     }
                 }
             });
+
+            return this;
         },
         
         remove: function(value){
@@ -189,6 +206,8 @@ function $(...selector){
                     }
                 })
             } 
+
+            return this;
         },
     
         children: function(value){
@@ -221,6 +240,8 @@ function $(...selector){
                     element.click();
                 });
             }
+
+            return this;
         },
     }
     
