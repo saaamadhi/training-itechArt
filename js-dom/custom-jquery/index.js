@@ -224,19 +224,34 @@ function $(...selector){
                 customObj.elems.forEach(element => {
                     const values = element.querySelectorAll(value);
                     if(values.length !== 0){
-                        result.push([...element.childNodes]);
-                    }else {
-                        if(element.matches(value)){
-                            result.push([...element.childNodes]);
-                        }
+                        let newArr = [...element.childNodes];
+                        let childs = [];
+                        newArr.forEach((item) => {
+                            if(item.childNodes.length !== 0){
+                                childs.push([...item.children]);
+                                result.push(childs);
+                            }
+                            if(item.nodeName !== '#text'){
+                                result.push(item);
+                            }
+                        });
                     }
                 });
             }else {
                 customObj.elems.forEach(element => {
-                    result.push([...element.childNodes]);
+                    let newArr = [...element.childNodes];
+                    let childs = [];
+                    newArr.forEach((item) => {
+                        if(item.childNodes.length !== 0){
+                            childs.push([...item.children]);
+                            result.push(childs);
+                        }
+                        if(item.nodeName !== '#text'){
+                            result.push(item);
+                        }
+                    })
                 });
             }
-
             return result.flat(Infinity);
         },
     
