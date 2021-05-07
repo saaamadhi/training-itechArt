@@ -219,8 +219,8 @@ function $(...selector){
         },
     
         children: function(value){
+            let result = [];
             if(value !== undefined){
-                let result = [];
                 customObj.elems.forEach(element => {
                     const values = element.querySelectorAll(value);
                     if(values.length !== 0){
@@ -231,16 +231,13 @@ function $(...selector){
                         }
                     }
                 });
-
-                return result;
             }else {
-                let result = [];
                 customObj.elems.forEach(element => {
                     result.push([...element.children]);
                 });
-
-                return result;
             }
+
+            return result.flat(Infinity);
         },
     
         click: function(handler){
