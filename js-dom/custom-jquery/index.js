@@ -224,16 +224,16 @@ function $(...selector){
                 customObj.elems.forEach(element => {
                     const values = element.querySelectorAll(value);
                     if(values.length !== 0){
-                        result.push([...element.children]);
+                        result.push([...element.childNodes]);
                     }else {
                         if(element.matches(value)){
-                            result.push([...element.children]);
+                            result.push([...element.childNodes]);
                         }
                     }
                 });
             }else {
                 customObj.elems.forEach(element => {
-                    result.push([...element.children]);
+                    result.push([...element.childNodes]);
                 });
             }
 
