@@ -2,6 +2,7 @@ import React from 'react';
 import "./progressbar.css";
 
 export default function ProgressBar({value}) {
+    if(value === '') value ='0';
     const size = 120;
     const strokeWidth = 4;
     const radius = size / 2 - strokeWidth * 2;
