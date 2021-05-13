@@ -1,0 +1,13 @@
+.circleBack {
+    stroke: #eee;
+    fill: transparent;
+}
+
+.circleFront {
+    stroke: #8eedd7;
+    fill: transparent;
+    stroke-linecap: round;
+    transform-origin: center;
+    transform: rotate(-90deg);
+    transition: 1s ease
+}
