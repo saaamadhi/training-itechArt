@@ -4,7 +4,7 @@ import './ProgressBar';
 import ProgressBar from './ProgressBar.js';
 
 function App() {
-  const [percent, setPercent] = useState(0)
+  const [percent, setPercent] = useState('');
 
   return (
     <div className="App">
