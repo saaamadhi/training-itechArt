@@ -42,5 +42,5 @@ export const {
     dellTodo,
     editTodo
 } = todoSlice.actions;
-export const todosList = state => state.todos.todoList;
+export const getTodoItems = state => state.todos.todoList;
 export default todoSlice.reducer;
