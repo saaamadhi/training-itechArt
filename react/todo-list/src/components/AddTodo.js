@@ -9,7 +9,7 @@ const AddTodo = () => {
 
     const addClickHandler = () => {
         const result = prompt("Enter text for new item:");
-        if(result !== '' && result !== null){
+        if(result){
             dispatch(addTodo({
                 id: Date.now(),
                 title: result,
