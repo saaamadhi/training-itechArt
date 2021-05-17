@@ -1,0 +1,14 @@
+button.MuiButton-root {
+    min-width: 10px;
+    padding: 0 6px;
+}
+
+.todoContainer {
+    flex-direction: "row"
+}
+
+.editIcon{
+    width: 15px;
+    height: 15px;
+    padding: 5px 0;
+}
