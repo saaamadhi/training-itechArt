@@ -7,8 +7,8 @@ button.MuiButton-root {
     flex-direction: "row"
 }
 
-.editIcon{
-    width: 15px;
-    height: 15px;
-    padding: 5px 0;
+.editIcon {
+    width: 8px;
+    height: 8px;
+    padding: 0;
 }
