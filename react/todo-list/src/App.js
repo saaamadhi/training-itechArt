@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoList from './components/TodoList';
 import AddTodo from './components/AddTodo';
-import './styles/App.css';
+import './styles/app.css';
 import {useSelector} from 'react-redux';
 import {todosList} from './redux/todoSlice';
 
@@ -9,7 +9,7 @@ const App = () => {
   const todos = useSelector(todosList);
 
   return (
-    <div className="App">
+    <div className="app">
       <div className="wrapper">
         <h1>ToDo List</h1>
           {todos.length ?  
