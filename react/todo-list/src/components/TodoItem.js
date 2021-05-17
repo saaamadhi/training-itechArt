@@ -13,7 +13,7 @@ const TodoItem = ({ id, title, checked}) => {
 
     const handlerEdit = (itemId) => {
         const newValue = prompt("Change value:", title);
-        if(newValue !== "" && newValue !== null){
+        if(newValue){
             dispatch(editTodo([itemId, newValue]));
         }
     }
