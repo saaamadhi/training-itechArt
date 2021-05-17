@@ -3,10 +3,10 @@ import TodoList from './components/TodoList';
 import AddTodo from './components/AddTodo';
 import './styles/app.css';
 import {useSelector} from 'react-redux';
-import {todosList} from './redux/todoSlice';
+import {getTodoItems} from './redux/todoSlice';
 
 const App = () => {
-  const todos = useSelector(todosList);
+  const todos = useSelector(getTodoItems);
 
   return (
     <div className="app">
