@@ -7,16 +7,6 @@ import {saveData} from '../redux/actions/index';
 export default function Search() {
     const [searchValue, setSearchValue] = useState('');
     const dispatch = useDispatch();
-
-    const getData = async() => {
-        const url = `${BASE_URL}part=snippet&q=${searchValue}&key=${API_KEY}`;
-        const response = await fetch(url);
-        if(response.ok){
-            const data = await response.json();
-            const resultList = data.items;
-            dispatch(saveData({arr: resultList}));
-        } 
-    }
     
     return (
         <div className="search">
@@ -27,7 +17,7 @@ export default function Search() {
                 placeholder="Enter smth..." 
                 onChange={(event) => setSearchValue(event.target.value)}
              />
-            <button className="search__btn" onClick={() => getData()}></button>
+            <button className="search__btn" onClick={() => dispatch(saveData(searchValue))}></button>
         </div>
     )
 }
