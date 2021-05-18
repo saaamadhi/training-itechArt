@@ -6,6 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   entry: "./src/index.js",
   mode: 'development',
+  target: 'web',
   module: {
     rules: [
       {
@@ -18,14 +19,22 @@ module.exports = {
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
-      }
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
     ]
   },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
   },
   output: {
-    path: path.join(__dirname, "/dist"),
+    path: path.join(__dirname, "./dist"),
     filename: 'bundle.js',
   },
   devServer: {
