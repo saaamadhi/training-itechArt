@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/video-item.css'
+import '../styles/video-item.css';
 
 export default function VideoItem({title, channelTitle, description, preview}) {
     return (
