@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {API_KEY, BASE_URL} from './constants';
 import '../styles/search.css';
 import {useDispatch} from 'react-redux';
 import {saveData} from '../redux/actions/index';
