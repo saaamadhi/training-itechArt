@@ -1,0 +1,1 @@
+export const actionCreators = { SAVE_DATA: 'SAVE_DATA' };
