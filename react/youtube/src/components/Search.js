@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../styles/search.css';
 import {useDispatch} from 'react-redux';
-import {saveData} from '../redux/actions/index';
+import {saveData} from '../redux/actions';
 
 export default function Search() {
     const [searchValue, setSearchValue] = useState('');
