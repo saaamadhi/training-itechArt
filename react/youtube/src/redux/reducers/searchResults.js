@@ -1,3 +1,5 @@
+import {actionCreators} from '../actionCreators';
+
 const initState = {
     data: []
 }
@@ -5,7 +7,7 @@ const initState = {
 const searchResults = (state = initState, action) => {
     const {type, payload} = action;
     switch(type){
-        case "SAVE_DATA": return {type, payload};
+        case actionCreators.SAVE_DATA: return {type, payload};
         default: return state.data;
     }
 }
