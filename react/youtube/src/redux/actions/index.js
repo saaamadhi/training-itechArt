@@ -1,8 +1,8 @@
 import {API_KEY, BASE_URL} from '../../constants';
-import {actionTypes} from '../actionTypes';
+import {actionType} from '../actionTypes';
 
 const saveAction = (payload) => ({
-    type: actionTypes.SAVE_DATA,
+    type: actionType.SAVE_DATA,
     payload
 });
 
