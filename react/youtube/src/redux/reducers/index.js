@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import rootReducer from './authReducer';
+import searchResults from './searchResults';
 
-const allReducers = combineReducers({
-    rootReducer
+const rootReducer = combineReducers({
+    searchResults
 });
 
-export default allReducers;
+export default rootReducer;

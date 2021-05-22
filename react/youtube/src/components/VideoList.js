@@ -4,10 +4,12 @@ import {useSelector} from 'react-redux';
 import '../styles/video-list.css';
 
 export default function VideoList() {
-    const data = useSelector(state => state.rootReducer);
+    let arrItems = [];
+    const data = useSelector(state => state.searchResults);
+    data.length === 0 ? arrItems = data : arrItems = [...data.payload.arr];
     return (
         <div className="video-list">
-            {data.map((item) => (
+            {arrItems.map((item) => (
                     <VideoItem
                         key={item.id.videoId} 
                         title={item.snippet.title}
