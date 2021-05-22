@@ -1,0 +1,28 @@
+.slogan-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100%;
+  width: 80%;
+}
+
+.slogan-container__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slogan-container__text--yellow {
+  font-size: 63px;
+  font-family: "Asap", sans-serif;
+  color: #f5c506;
+  text-transform: uppercase;
+}
+
+.slogan-container__text--white {
+  font-size: 63px;
+  font-family: "Asap", sans-serif;
+  color: #ffffff;
+  text-transform: uppercase;
+}

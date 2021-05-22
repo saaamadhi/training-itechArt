@@ -1,0 +1,1 @@
+export const actionTypes = { SAVE_DATA: 'SAVE_DATA' };

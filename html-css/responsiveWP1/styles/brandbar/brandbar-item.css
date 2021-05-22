@@ -1,21 +1,3 @@
-.brandbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 212px;
-  background: center / cover no-repeat url(../images/brandbar/back-brandbar.png);
-  box-shadow: 0 0 9px 0 #000000;
-  z-index: 1;
-}
-
-.container {
-  display: flex;
-  justify-content: space-around;
-  align-items: baseline;
-  width: 100%;
-}
-
 .item {
   display: flex;
   flex-direction: column;

@@ -1,0 +1,37 @@
+@import "./benefits-imgs-block.css";
+@import "./benefits-list.css";
+
+.main-benefits {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px;
+  width: 100%;
+  min-height: 498px;
+  height: 100%;
+  box-sizing: border-box;
+  background: center / cover no-repeat
+    url(../../images/main-benefits/background.png);
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 59px;
+  width: 80%;
+}
+
+.title-container__title {
+  font-family: "Asap", sans-serif;
+  font-size: 43px;
+  text-transform: uppercase;
+  color: #f5c506;
+}
+
+.content-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 80%;
+}

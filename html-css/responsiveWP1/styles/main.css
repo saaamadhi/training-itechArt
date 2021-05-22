@@ -1,7 +1,7 @@
 @import "../node_modules/reset-css/reset.css";
-@import "./header.css";
-@import "./brandbar.css";
-@import "./features.css";
-@import "./main-benefits.css";
-@import "./footer.css";
-@import "./media.css";
+@import "./header/header.css";
+@import "./brandbar/brandbar.css";
+@import "./features/features.css";
+@import "./main-benefits/main-benefits.css";
+@import "./footer/footer.css";
+@import "./media/media.css";
